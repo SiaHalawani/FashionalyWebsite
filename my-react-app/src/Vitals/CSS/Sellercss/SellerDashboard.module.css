@@ -1,0 +1,250 @@
+/* ========== SELLER DASHBOARD WRAPPER ========== */
+.dashboardContainer {
+    height: 100vh; /* not max-height */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+  }
+  .userContainer {
+    height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    padding: 0 20px;
+  }
+  
+  
+  /* ========== HEADER STYLE LIKE USER ========== */
+  .sellerheadpage {
+    background-color: var(--background-color);
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .profileTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .profilePicContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .profilePic {
+    border-radius: 50%;
+    border: 2px solid #8b5cf6;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+  
+  .editBtn {
+    margin-top: 8px;
+    padding: 4px 12px;
+    font-size: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--background-color-btn);
+    color: var(--text-btn);
+    cursor: pointer;
+  }
+  
+  .profileStats {
+    flex-grow: 1;
+    min-width: 180px;
+  }
+  
+  .username {
+    font-size: 18px;
+    margin: 4px 0;
+    color: var(--text-titles);
+  }
+  
+  .userbio {
+    font-size: 13px;
+    margin: 2px 0;
+    color: var(--text-subtitles);
+  }
+  
+  .userinfo,
+  .userlocation {
+    font-size: 12px;
+    color: var(--text-subtitles);
+  }
+  
+  /* Verified badge style if needed */
+  .verifiedBadge {
+    font-size: 12px;
+    color: green;
+    margin-left: 6px;
+  }
+  
+  .followStats {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    min-width: 100px;
+    color: var(--text-titles);
+  }
+  
+  .followStats div {
+    margin-bottom: 10px;
+  }
+  
+  /* ========== BODY SECTION ========== */
+  .sellerbodypage {
+    padding: 10px 20px;
+    background-color: var(--background-color);
+  }
+  
+  /* ========== TABS ========== */
+  .navTabs {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .tabItem {
+    font-size: 14px;
+    padding: 6px 10px;
+    color: var(--text-subtitles);
+    cursor: pointer;
+  }
+  
+  .activeTab {
+    font-size: 14px;
+    padding: 6px 10px;
+    font-weight: bold;
+    border-bottom: 2px solid #8b5cf6;
+    color: #8b5cf6;
+    cursor: pointer;
+  }
+  
+  /* ========== SECTION LINKS ========== */
+  .linksBar {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    gap: 12px;
+  }
+  
+  .linkItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    width: 70px;
+    text-align: center;
+    color: var(--text-subtitles);
+  }
+  
+  .deleteBtn {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 16px;
+    margin-top: 4px;
+    cursor: pointer;
+  }
+  
+  /* ========== ADD BUTTON ========== */
+  .addBtn {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 32px;
+    color: var(--text-subtitles);
+    background-color: var(--background-color-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .addBtn:hover {
+    background-color: #ddd;
+  }
+  
+  /* ========== GRID LAYOUT ========== */
+  .tabContent {
+    margin-top: 15px;
+  }
+  
+  .gridItems {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 12px;
+    padding: 10px 0;
+  }
+  
+  .itemBox {
+    background-color: var(--background-color-box);
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    min-height: 160px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease;
+  }
+  
+  .itemBox:hover {
+    transform: translateY(-2px);
+  }
+  
+  .itemBox img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 8px;
+  }
+  
+  .itemLabel {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 4px;
+    color: var(--text-box);
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .itemSub {
+    font-size: 11px;
+    color: var(--text-box);
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .dashboardBody {
+    height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  

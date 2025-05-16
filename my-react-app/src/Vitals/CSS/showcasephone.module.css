@@ -1,0 +1,39 @@
+
+.phone {
+    display: grid;
+    grid-template-areas: 
+        "top top top" 
+        "middle middle middle"
+        "bottom bottom bottom";
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 1fr 12fr 1fr;
+    max-width: 100wh;
+    max-height: 100vh;
+}
+
+
+.pos_top {
+    grid-area: top;
+    max-height: 5vh;
+    min-height: 5vh;
+    overflow: hidden;
+}
+
+.pos_mid1 {
+    grid-area: middle;
+    height:40vh;
+}
+
+.pos_bottom {
+    grid-area: bottom;
+}
+ .pos_bottom {
+    display: flex;
+    justify-content: bottom;
+    align-items: center;
+    height: 55vh;
+    text-align: center;
+} 
+
+
+ 

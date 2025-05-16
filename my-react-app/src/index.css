@@ -1,0 +1,375 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* COLOR THEMES, COLOR VARIABLES */
+
+/* Default (Light Theme) */
+:root,
+[data-theme="light"] {
+  --background-color: #fefefe;
+  --background-color-secondary: #f4f4f4;
+  --background-color-btn: #1f1f1f;
+  --background-toggle-color-btn: #007acc;
+  --text-btn: #ffffff;
+
+  --text-titles: #111111;
+  --text-subtitles: #666666;
+  --text-body: #2a2a2a;
+  --text-box: #1a1a1a;
+
+  --background-color-box: #ffffff;
+
+  --toggle-bg: #007acc;
+  --toggle-fg: #ffffff;
+}
+
+[data-theme="blue-neutral-light"] {
+  --background-color: #FFFFFF;
+  --background-color-secondary: #F5EFEB;
+  --background-color-box: #E6EDF3;
+  --background-color-btn: #567C8D;
+  --background-toggle-color-btn: #2F4156;
+  --text-btn: #FFFFFF;
+  --text-titles: #2F4156;
+  --text-subtitles: #567C8D;
+  --text-body: #2F4156;
+  --toggle-bg: #2F4156;
+  --toggle-fg: #FFFFFF;
+  --text-box: #2F4156;
+}
+[data-theme="blue-neutral"] {
+  --background-color: #C8D9E6;
+  --background-color-secondary: #B2C7D8;
+  --background-color-box: #A1B9CE;
+  --background-color-btn: #2F4156;
+  --background-toggle-color-btn: #567C8D;
+  --text-btn: #FFFFFF;
+  --text-titles: #1B2A38;
+  --text-subtitles: #2F4156;
+  --text-body: #1B2A38;
+  --toggle-bg: #567C8D;
+  --toggle-fg: #FFFFFF;
+  --text-box: #1B2A38;
+}
+[data-theme="blue-neutral-dark"] {
+  --background-color: #1B2A38;
+  --background-color-secondary: #233445;
+  --background-color-box: #2F4156;
+  --background-color-btn: #567C8D;
+  --background-toggle-color-btn: #90AFCB;
+  --text-btn: #ffffff;
+  --text-titles: #E0E9F1;
+  --text-subtitles: #C0D1DE;
+  --text-body: #AABCCC;
+  --toggle-bg: #90AFCB;
+  --toggle-fg: #1B2A38;
+  --text-box: #ffffff;
+}
+
+[data-theme="pink-red-light"] {
+  --background-color: #FCEBF2;
+  --background-color-secondary: #EDD8E2;
+  --background-color-box: #DFB8CC;
+  --background-color-btn: #BF7896;
+  --background-toggle-color-btn: #9B5372;
+  --text-btn: #ffffff;
+  --text-titles: #471e30;
+  --text-subtitles: #BF7896;
+  --text-body: #9B5372;
+  --toggle-bg: #9B5372;
+  --toggle-fg: #ffffff;
+  --text-box: #9B5372;
+}
+
+[data-theme="pink-red"] {
+  --background-color: #DFB8CC;
+  --background-color-secondary: #D895B1;
+  --background-color-box: #BF7896;
+  --background-color-btn: #9B5372;
+  --background-toggle-color-btn: #6D2F47;
+  --text-btn: #ffffff;
+  --text-titles: #5B2A3A;
+  --text-subtitles: #6D2F47;
+  --text-body: #5B2A3A;
+  --toggle-bg: #6D2F47;
+  --toggle-fg: #ffffff;
+  --text-box: #5B2A3A;
+}
+[data-theme="pink-red-dark"] {
+  --background-color: #3B1F2A;
+  --background-color-secondary: #4C2A37;
+  --background-color-box: #5B2A3A;
+  --background-color-btn: #9B5372;
+  --background-toggle-color-btn: #D895B1;
+  --text-btn: #ffffff;
+  --text-titles: #F6E3EB;
+  --text-subtitles: #D3A7BD;
+  --text-body: #C597AC;
+  --toggle-bg: #D895B1;
+  --toggle-fg: #3B1F2A;
+  --text-box: #ffffff;
+}
+[data-theme="chocolate-brown-light"] {
+  --background-color: #F2E4DC;
+  --background-color-secondary: #D7B19D;
+  --background-color-box: #BC8A70;
+  --background-color-btn: #844B32;
+  --background-toggle-color-btn: #612E20;
+  --text-btn: #ffffff;
+  --text-titles: #3A1D10;
+  --text-subtitles: #612E20;
+  --text-body: #3A1D10;
+  --toggle-bg: #612E20;
+  --toggle-fg: #ffffff;
+  --text-box: #3A1D10;
+}
+
+
+[data-theme="chocolate-brown"] {
+  --background-color: #BC8A70;
+  --background-color-secondary: #A56C52;
+  --background-color-box: #844B32;
+  --background-color-btn: #612E20;
+  --background-toggle-color-btn: #30150A;
+  --text-btn: #ffffff;
+  --text-titles: #2B1208;
+  --text-subtitles: #3F1F14;
+  --text-body: #2B1208;
+  --toggle-bg: #30150A;
+  --toggle-fg: #ffffff;
+  --text-box: #2B1208;
+}
+
+
+[data-theme="chocolate-brown-dark"] {
+  --background-color: #1E0E07;
+  --background-color-secondary: #30150A;
+  --background-color-box: #3F1F14;
+  --background-color-btn: #844B32;
+  --background-toggle-color-btn: #BC8A70;
+  --text-btn: #ffffff;
+  --text-titles: #F1D5C2;
+  --text-subtitles: #D7B19D;
+  --text-body: #C9A78F;
+  --toggle-bg: #BC8A70;
+  --toggle-fg: #1E0E07;
+  --text-box: #ffffff;
+}
+[data-theme="gray-mono-light"] {
+  --background-color: #F4F3F1;
+  --background-color-secondary: #DBDAD5;
+  --background-color-box: #A1A19C;
+  --background-color-btn: #646560;
+  --background-toggle-color-btn: #3E3F3A;
+  --text-btn: #ffffff;
+  --text-titles: #11120E;
+  --text-subtitles: #3E3F3A;
+  --text-body: #11120E;
+  --toggle-bg: #3E3F3A;
+  --toggle-fg: #ffffff;
+  --text-box: #11120E;
+}
+[data-theme="gray-mono"] {
+  --background-color: #A1A19C;
+  --background-color-secondary: #888884;
+  --background-color-box: #646560;
+  --background-color-btn: #3E3F3A;
+  --background-toggle-color-btn: #11120E;
+  --text-btn: #ffffff;
+  --text-titles: #11120E;
+  --text-subtitles: #292A27;
+  --text-body: #11120E;
+  --toggle-bg: #11120E;
+  --toggle-fg: #ffffff;
+  --text-box: #ffffff;
+}
+[data-theme="gray-mono-dark"] {
+  --background-color: #1A1B19;
+  --background-color-secondary: #2A2B27;
+  --background-color-box: #3E3F3A;
+  --background-color-btn: #646560;
+  --background-toggle-color-btn: #DBDAD5;
+  --text-btn: #ffffff;
+  --text-titles: #ffffff;
+  --text-subtitles: #DCDAD6;
+  --text-body: #CCCCCC;
+  --toggle-bg: #DBDAD5;
+  --toggle-fg: #1A1B19;
+  --text-box: #ffffff;
+}
+
+
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-subtitles); /* Default body text */
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --background-color: #0b0c10;
+  --background-color-secondary: #121417;
+  --background-color-box: #161b22;
+
+  --background-color-btn: #0ff;
+  --background-toggle-color-btn: #00ff99;
+
+  --text-btn: #000000;
+  --text-titles: #39ff14;
+  --text-subtitles: #8affff;
+  --text-body: #ffffff;
+  --text-box: #ffffff;
+
+  --toggle-bg: #ff00ff;
+  --toggle-fg: #000000;
+}
+
+
+
+/* Solarized Theme */
+[data-theme="solarized"] {
+  --background-color: #fdf6e3;
+  --background-color-secondary: #eee8d5;
+  --background-color-btn: #2aa198;
+  --background-toggle-color-btn: #859900;
+  --text-btn: #fdf6e3;
+  --text-titles: #073642;
+  --text-subtitles: #586e75;
+  --text-body: #657b83;
+  --toggle-bg: #859900;
+  --toggle-fg: #fdf6e3;
+  --background-color-box: #eee8d5;
+  --text-box: #073642;
+}
+
+
+/* Night Owl Theme */
+[data-theme="night-owl"] {
+  --background-color: #011627;
+  --background-color-secondary: #1e293b;
+  --background-color-btn: #82aaff;
+  --background-toggle-color-btn: #c792ea;
+  --text-btn: #ffffff;
+  --text-titles: #d6deeb;
+  --text-subtitles: #a5b4cd;
+  --text-body: #f8f8f2;
+  --toggle-bg: #c792ea;
+  --toggle-fg: #011627;
+  --background-color-box: #1e293b;
+  --text-box: #ffffff;
+}
+
+
+/* Dracula Theme */
+[data-theme="dracula"] {
+  --background-color: #282a36;
+  --background-color-secondary: #44475a;
+  --background-color-btn: #bd93f9;
+  --background-toggle-color-btn: #50fa7b;
+  --text-btn: #f8f8f2;
+  --text-titles: #f8f8f2;
+  --text-subtitles: #6272a4;
+  --text-body: #f8f8f2;
+  --toggle-bg: #50fa7b;
+  --toggle-fg: #282a36;
+  --background-color-box: #44475a;
+  --text-box: #f8f8f2;
+}
+
+
+/* Monokai Theme */
+[data-theme="monokai"] {
+  --background-color: #272822;
+  --background-color-secondary: #3e3d32;
+  --background-color-btn: #f92672;
+  --background-toggle-color-btn: #a6e22e;
+  --text-btn: #ffffff;
+  --text-titles: #f8f8f2;
+  --text-subtitles: #75715e;
+  --text-body: #f8f8f2;
+  --toggle-bg: #a6e22e;
+  --toggle-fg: #272822;
+  --background-color-box: #3e3d32;
+  --text-box: #ffffff;
+}
+
+
+/* Gruvbox Theme */
+[data-theme="gruvbox"] {
+  --background-color: #fbf1c7;
+  --background-color-secondary: #ebdbb2;
+  --background-color-btn: #cc241d;
+  --background-toggle-color-btn: #98971a;
+  --text-btn: #ffffff;
+  --text-titles: #3c3836;
+  --text-subtitles: #504945;
+  --text-body: #3c3836;
+  --toggle-bg: #98971a;
+  --toggle-fg: #fbf1c7;
+  --background-color-box: #ebdbb2;
+  --text-box: #3c3836;
+}
+
+
+/* Ayu Mirage Theme */
+[data-theme="ayu-mirage"] {
+  --background-color: #202734;
+  --background-color-secondary: #2d3640;
+  --background-color-btn: #ffcc66;
+  --background-toggle-color-btn: #ff3333;
+  --text-btn: #2d2d2d;
+  --text-titles: #ffffff;
+  --text-subtitles: #b3b9c5;
+  --text-body: #e6e1cf;
+  --toggle-bg: #ff3333;
+  --toggle-fg: #f9f9f9;
+  --background-color-box: #2d3640;
+  --text-box: #ffffff;
+}
+
+
+/* Palenight Theme */
+[data-theme="palenight"] {
+  --background-color: #292d3e;
+  --background-color-secondary: #3e4451;
+  --background-color-btn: #c792ea;
+  --background-toggle-color-btn: #82aaff;
+  --text-btn: #f8f8f2;
+  --text-titles: #f8f8f2;
+  --text-subtitles: #a6accd;
+  --text-body: #f8f8f2;
+  --toggle-bg: #82aaff;
+  --toggle-fg: #292d3e;
+  --background-color-box: #3e4451;
+  --text-box: #f8f8f2;
+}
+
+/* One Dark Theme */
+[data-theme="one-dark"] {
+  --background-color: #282c34;
+  --background-color-secondary: #353b45;
+  --background-color-btn: #61afef;
+  --background-toggle-color-btn: #98c379;
+  --text-btn: #ffffff;
+  --text-titles: #abb2bf;
+  --text-subtitles: #5c6370;
+  --text-body: #abb2bf;
+  --toggle-bg: #98c379;
+  --toggle-fg: #282c34;
+  --background-color-box: #353b45;
+  --text-box: #ffffff;
+}
+
+
+
+body, html{
+  overflow: hidden;
+}

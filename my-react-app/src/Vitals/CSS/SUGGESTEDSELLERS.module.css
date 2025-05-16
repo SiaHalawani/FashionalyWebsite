@@ -1,0 +1,141 @@
+/* ===== Explore.module.css - Compact by Default for Suggested Seller Items ===== */
+
+.exploreWrapper {
+  max-height: 260px;
+  overflow-x: auto;
+  padding: 0 12px;
+  margin-top: 20px;
+  background: transparent;
+  scrollbar-width: none;
+}
+
+.exploreWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.exploreContainer {
+  padding: 0;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.sectionTitle,
+.brandHeader h2 {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--text-titles);
+  margin: 6px 0 10px 8px;
+}
+
+.brandHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.brandHeader img {
+  height: 20px;
+  border-radius: 4px;
+}
+
+/* ==== Scroll & Drag Container ==== */
+.scrollContainer {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  user-select: none;
+  cursor: grab;
+}
+
+.scrollContainer.dragging {
+  cursor: grabbing;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollTrack {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 4px;
+  width: max-content;
+  pointer-events: auto;
+}
+
+/* ==== Card Styling ==== */
+.card {
+  flex: 0 0 auto;
+  width: 80px;
+  background-color: var(--background-color-box);
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
+  user-select: none;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.card img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  background-color: #333;
+  margin-bottom: 4px;
+  pointer-events: none;
+}
+
+.card p {
+  font-size: 11px;
+  color: var(--text-box);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+}
+
+/* ==== Hidden Search Styles (left for reuse, not used in Suggested Items) ==== */
+.searchBar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.searchBar input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: var(--background-color-box);
+  color: var(--text-box);
+  border: 1px solid #444;
+  font-size: 14px;
+}
+
+.searchBar button {
+  padding: 10px 16px;
+  background: var(--background-color-btn);
+  color: var(--text-btn);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.searchBar button:hover {
+  background-color: var(--background-color-btn-hover, #555);
+}

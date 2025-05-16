@@ -1,0 +1,49 @@
+@media screen and (max-width: 768px) {
+    .phone {
+      display: grid;
+      grid-template-areas:
+          "top top top" 
+          "middle middle middle";
+      grid-template-columns: 1fr 8fr 1fr;
+      grid-template-rows: 2fr 12fr;
+      max-width: 100vw;
+      max-height: 100vh;
+    }
+  
+    .pos_top {
+      grid-area: top;
+      max-height: 8vh;
+      min-height: 8vh;
+      overflow: hidden;
+    }
+  
+    .pos_mid1 {
+      grid-area: middle;
+      height: 90vh; /* Taking up more space, excluding footer */
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .phone {
+      display: grid;
+      grid-template-areas:
+          "top middle";
+      grid-template-columns: 4fr 12fr;
+      grid-template-rows: auto;
+      max-width: 100vw;
+      max-height: 100vh;
+    }
+  
+    .pos_top {
+      grid-area: top;
+      height: auto;
+      overflow: hidden;
+    }
+  
+    .pos_mid1 {
+      grid-area: middle;
+      height: 100vh;
+      overflow: auto;
+    }
+  }
+  

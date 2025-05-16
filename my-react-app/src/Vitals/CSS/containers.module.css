@@ -1,0 +1,684 @@
+/* ===================================== */
+/* === GLOBAL & MAIN STRUCTURE SETUP === */
+/* ===================================== */
+.iconWrapper {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
+.dotIndicator {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 14px;
+  height: 14px;
+  background-color: red;
+  border-radius: 50%;
+  z-index: 9999;
+}
+
+
+
+
+
+.fullcontainer,
+.boxcontainer,
+.LoginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0 auto;
+  max-width: 80vw;
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 60vw;
+  text-align: center;
+  gap: 20px;
+  margin: 30px;
+}
+
+.basicimagecontainer {
+  display: flex;
+  gap: 4vmin;
+  position: absolute;
+  left: 50%;
+  margin: 0 auto;
+}
+
+/* ================= */
+/* === SCROLLING === */
+/* ================= */
+
+@media screen and (max-width: 768px) {
+  .scrollContainer {
+    height: 90vh;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: var(--background-color-box);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .scrollContainer {
+    height: 100vh;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: var(--background-color-box);
+  }
+}
+
+/* =============== */
+/* === HEADER  === */
+/* =============== */
+.headercontainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: var(--background-color-secondary);
+  color: var(--text-titles);
+  transition: all 0.3s ease;
+}
+
+.headercontainer nav {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.headercontainer nav .icon {
+  font-size: 18px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--text-titles);
+  transition: color 0.3s ease;
+}
+
+.headercontainer nav .icon:hover,
+.headercontainer .theme-toggler:hover {
+  color: var(--text-titles);
+}
+
+.headercontainer .theme-toggler {
+  font-size: 18px;
+  cursor: pointer;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+/* Collapsed layout */
+.collapsed.headercontainer {
+  height: 60px !important;
+  padding: 6px 12px !important;
+  gap: 8px;
+}
+
+.collapsed.headercontainer nav {
+  gap: 8px;
+}
+
+.collapsed .icon span {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.icon span {
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 767px) {
+  .headercontainer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .headercontainer nav {
+    display: none;
+  }
+
+  .headercontainer .theme-toggler {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .headercontainer {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    height: 100vh;
+    align-items: center;
+    border-right: 0.5px solid var(--text-titles);
+  }
+
+  .headercontainer nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .headercontainer nav .icon {
+    font-size: 18px;
+  }
+
+  .headercontainer .theme-toggler {
+    margin-top: 20px;
+  }
+
+  .collapsed.headercontainer {
+    height: 64px !important;
+    padding: 8px !important;
+  }
+
+  .collapsed.headercontainer nav {
+    gap: 10px;
+  }
+}
+/* Add collapsed variant styles for .headercontainer */
+.collapsed.headercontainer {
+  height: 64px !important;
+  padding: 8px 10px !important;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+/* =============== */
+/* === FOOTER  === */
+/* =============== */
+
+.footercontainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: var(--background-color-secondary);
+  color: var(--text-titles);
+  width: 100%;
+}
+
+.footercontainer nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.footercontainer nav .icon {
+  font-size: 18px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--text-titles);
+  transition: color 0.3s ease;
+}
+
+.footercontainer nav .icon:hover,
+.footercontainer .theme-toggler:hover {
+  color: var(--text-titles);
+}
+
+.footercontainer .theme-toggler {
+  font-size: 18px;
+  cursor: pointer;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .footercontainer {
+    flex-direction: row;
+    justify-content: center;
+    height: auto;
+  }
+
+  .footercontainer nav {
+    flex-direction: row;
+  }
+
+  .footercontainer .theme-toggler {
+    display: none;
+  }
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .footercontainer {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 30px;
+    height: 100vh;
+    padding: 40px 20px;
+    border-left: 0.5px solid var(--text-titles);
+    width: 100%;
+max-width: 100%;
+box-sizing: border-box;
+
+  }
+
+  .footercontainer nav {
+    display: none;
+  }
+
+  .footercontainer .theme-toggler {
+    display: block;
+  }
+}
+
+/* =============== */
+/* === PROFILE === */
+/* =============== */
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userSection img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--text-titles);
+}
+
+.displayName {
+  font-size: 12px;
+  color: gray;
+}
+
+/* =============== */
+/* === SUGGEST === */
+/* =============== */
+.suggestSection {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.suggestHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: gray;
+}
+
+.suggestHeader span {
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+}
+
+.suggestUser {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Align text left and button right */
+  gap: 10px;
+  width: 100%;
+}
+
+.suggestUser img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+.suggestText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.followedBy {
+  font-size: 11px;
+  color: gray;
+}
+
+
+
+/* =============== */
+/* === FOOTER LINKS === */
+/* =============== */
+
+.footerLinks {
+  margin-top: auto;
+  font-size: 11px;
+  color: gray;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 220px;
+  line-height: 1.4;
+}
+
+
+/* Responsive switch */
+.desktopOnly {
+    display: none;
+  }
+  
+  .mobileOnly {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 12px 0;
+  }
+  
+  .mobileOnly .icon {
+    font-size: 24px;
+    color: var(--text-titles);
+    cursor: pointer;
+  }
+  
+  @media (min-width: 768px) {
+    .desktopOnly {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+    }
+  
+    .mobileOnly {
+      display: none;
+    }
+  }
+  .icon span {
+    transition: opacity 0.3s ease;
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .icon span {
+      opacity: 0;
+      pointer-events: none;
+      width: 0;
+      overflow: hidden;
+    }
+  }
+  .icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px; /* control your default font size here */
+    color: var(--text-titles);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+
+
+  /* New responsive navigation container */
+.responsiveNav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 12px 0;
+}
+
+.responsiveNav .icon {
+  font-size: 24px;
+  color: var(--text-titles);
+  cursor: pointer;
+}
+
+/* Mobile: Row layout, only icons */
+@media (max-width: 767px) {
+  .responsiveNav {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .responsiveNav .icon span {
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    overflow: hidden;
+  }
+
+  .responsiveNav .icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    transition: all 0.2s ease;
+  }
+}
+
+/* Desktop: Column layout with title and icons */
+@media (min-width: 768px) {
+  .responsiveNav {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .responsiveNav .icon span {
+    opacity: 1;
+    width: auto;
+    pointer-events: auto;
+  }
+
+  .responsiveNav .icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+  }
+}
+.collapsed .icon span {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.icon span {
+  transition: all 0.2s ease;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.icon:hover {
+  background-color: var(--background-color-box);
+  transform: translateY(-1px);
+}
+a.icon {
+  text-decoration: none; /* Remove underline */
+  color: inherit;        /* Use current text color */
+}
+
+a.icon:hover {
+  text-decoration: none;
+}
+/* Remove link underline globally inside nav icons */
+.icon {
+  text-decoration: none !important;
+}
+
+/* Active icon style */
+.activeIcon {
+  background-color: var(--background-color-toggle); /* You can customize */
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-weight: bold;
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Optional hover to match */
+.icon:hover {
+  background-color: var(--background-color-box);
+  border-radius: 10px;
+}
+.fashonlyTitle {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: 'Poppins', sans-serif; /* or any modern clean font */
+  color: var(--text-titles);
+  margin: 10px 0;
+  text-align: center;
+  background: linear-gradient(to right, var(--text-titles), var(--text-subtitles));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.3s ease;
+}
+
+.fashonlyTitle:hover {
+  transform: scale(1.05);
+}
+
+
+
+/*===============================*/
+
+
+.brandTitle {
+  font-size: 22px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 0.6px;
+  color: var(--text-titles);
+  background: linear-gradient(90deg, var(--text-titles), var(--text-subtitles));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+/* Scrollable user list area */
+.scrollContainer {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: calc(100vh - 110px);
+  padding: 0 10px;
+  border-right: 1px solid var(--background-color-box);
+}
+
+/* Each user entry */
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background-color: transparent;
+  border-bottom: 1px solid var(--background-color-secondary);
+  transition: background 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.userCard:hover {
+  background-color: rgba(120, 120, 120, 0.06);
+  transform: translateX(2px);
+}
+
+/* Selected user */
+.activeUser {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 10px;
+  transform: scale(1.035);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.15),
+    0 0 12px rgba(0, 200, 255, 0.15);
+  transition: all 0.3s ease;
+  z-index: 1;
+  animation: popIn 0.3s ease forwards;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.035);
+    opacity: 1;
+  }
+}
+
+/* Profile image */
+.userAvatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--text-subtitles);
+}
+
+/* Info text container */
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Username */
+.username {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-titles);
+  margin: 0;
+}
+
+/* Bio */
+.bioText {
+  font-size: 0.78rem;
+  color: var(--text-subtitles);
+  margin-top: 3px;
+  opacity: 0.85;
+  line-height: 1.4;
+}
+
+/* Link reset */
+.userLink {
+  text-decoration: none;
+}
+
+/* Empty state */
+.emptyText {
+  color: var(--text-subtitles);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 16px;
+  opacity: 0.7;
+}

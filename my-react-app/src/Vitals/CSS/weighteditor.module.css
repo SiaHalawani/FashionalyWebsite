@@ -1,0 +1,152 @@
+/* ======= Desktop Defaults ======= */
+.weightEditorTab,
+.filterTab {
+  background-color: var(--background-color);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  color: var(--text-subtitles);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ======= Shared Elements ======= */
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-titles);
+  text-align: center;
+}
+
+.sliderGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-weight: 500;
+  color: var(--text-subtitles);
+  font-size: 0.95rem;
+}
+
+.value {
+  font-weight: 600;
+  color: var(--text-titles);
+}
+
+.slider {
+  width: 100%;
+  appearance: none;
+  height: 6px;
+  border-radius: 4px;
+  background: #ccc;
+  outline: none;
+  transition: background 0.3s;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--background-color-btn);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.button {
+  flex: 1;
+  background-color: var(--background-color-btn);
+  color: var(--text-btn);
+  padding: 10px 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--background-color-btn-hover, #000);
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.input,
+.select {
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: var(--background-color-box);
+  color: var(--text-box);
+  outline: none;
+}
+
+.row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.inputSmall {
+  flex: 1;
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: var(--background-color-box);
+  color: var(--text-box);
+}
+
+/* ======= Scroll on Mobile Only ======= */
+@media (max-width: 768px) {
+    .filterTab,
+    .weightEditorTab {
+      max-height: 75vh;
+      margin: 5vh auto 20vh; /* ✅ Top: 5vh, Bottom: 7vh */
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--background-color-btn) transparent;
+      padding-bottom: 5rem; /* ✅ Prevents button clipping */
+    }
+    
+    /* Webkit scrollbar styling */
+    .filterTab::-webkit-scrollbar,
+    .weightEditorTab::-webkit-scrollbar {
+      width: 6px;
+    }
+    .filterTab::-webkit-scrollbar-thumb,
+    .weightEditorTab::-webkit-scrollbar-thumb {
+      background-color: var(--background-color-btn);
+      border-radius: 10px;
+    }
+    
+      
+  }
+  

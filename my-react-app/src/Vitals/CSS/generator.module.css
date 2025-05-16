@@ -1,0 +1,283 @@
+/* =============== GLOBAL RESET =============== */
+* {
+  box-sizing: border-box;
+}
+
+/* =============== MAIN LAYOUT =============== */
+.generatorLayout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* =============== LEFT SECTION =============== */
+.wardrobeSection {
+  flex: 1 1 80%;
+  max-width: 80%;
+  background: var(--background-color-secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.wardrobeLayout {
+  display: grid;
+  grid-template-columns: 90px 1fr 90px;
+  gap: 0;
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+}
+
+/* =============== SIDE COLUMNS =============== */
+.sideColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =============== CENTER GRID =============== */
+.centerGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(80px, 1fr));
+  gap: 8px;
+  padding: 8px;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+}
+
+/* =============== GRID ITEM BOXES =============== */
+.gridItemBox {
+  width: 100%;
+  aspect-ratio: 1;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.gridItemBox:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* =============== SMALL ITEM BOXES =============== */
+.smallItemBox {
+  width: 80px;
+  aspect-ratio: 1;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* =============== TEXT & ICONS =============== */
+.itemName {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  right: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 4px 6px;
+  border-radius: 6px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.icon {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  padding: 4px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s ease;
+}
+
+.icon:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* =============== CONTROL PANEL =============== */
+.controlcontainer {
+  flex: 1 1 20%;
+  max-width: 20%;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color-secondary);
+  overflow-y: auto;
+}
+
+.propspreview {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.propspreviewcontainer {
+  background-color: var(--background-color);
+  padding: 0.75rem;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.propspreviewtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-titles);
+}
+
+.propspreviewcontent p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+  color: var(--text-subtitles);
+}
+
+.controlbuttoncontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.controlbutton {
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  background-color: var(--background-color-btn);
+  color: var(--text-btn);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.controlbutton:hover {
+  background-color: var(--background-color-btn-hover);
+}
+
+/* =============== DIMMED STATE =============== */
+.dimmedItem {
+  opacity: 0.5;
+  filter: grayscale(0.3) brightness(0.9);
+  transition: all 0.3s ease;
+}
+
+/* =============== SCROLL WRAPPER =============== */
+.scrollWrapper {
+  background-color: var(--background-color-secondary);
+}
+
+/* Only scroll on small devices */
+@media (max-width: 768px) {
+  .scrollWrapper {
+    height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20vh;
+  }
+
+  .generatorLayout {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .wardrobeSection {
+    align-items: stretch;
+    height: auto;
+    padding-bottom: 2rem;
+  }
+
+  .wardrobeLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    height: auto;
+  }
+
+  .sideColumn {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .centerGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .gridItemBox {
+    width: 90%;
+    max-width: 150px;
+  }
+
+  .smallItemBox {
+    width: 65px;
+  }
+
+  .controlcontainer {
+    max-height: none;
+    overflow-y: visible;
+    flex: none;
+    padding: 1rem;
+    padding-bottom: 5vh;
+  }
+
+  .propspreviewcontainer {
+    width: 100%;
+  }
+
+  .itemName {
+    font-size: 0.65rem;
+    padding: 2px 4px;
+  }
+}
+
+/* =============== TABLET BREAKPOINT =============== */
+@media (max-width: 870px) {
+  .generatorLayout {
+    flex-direction: column;
+  }
+
+  .wardrobeSection,
+  .controlcontainer {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .wardrobeLayout {
+    grid-template-columns: 80px 1fr 80px;
+    padding-bottom: 1rem;
+  }
+
+  .smallItemBox {
+    width: 70px;
+  }
+}

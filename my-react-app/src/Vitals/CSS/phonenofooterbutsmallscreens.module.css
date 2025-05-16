@@ -1,0 +1,66 @@
+@media screen and (max-width: 768px) {
+  .phone {
+    display: grid;
+    grid-template-areas: 
+      "top top top" 
+      "middle middle middle"
+      "bottom bottom bottom";
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 2fr 12fr 2fr;
+    max-width: 100vw; /* ✅ Fix typo */
+    max-height: 100vh;
+  }
+
+  .pos_top {
+    grid-area: top;
+    max-height: 8vh;
+    min-height: 8vh;
+    overflow: hidden;
+  }
+
+  .pos_mid1 {
+    grid-area: middle;
+    height: 84vh;
+    overflow-y: auto;
+  }
+
+  .pos_bottom {
+    grid-area: bottom;
+    display: flex;
+    justify-content: flex-end; /* ✅ Use flex-end instead of bottom */
+    align-items: center;
+    height: 8vh;
+    text-align: center;
+    background-color: #f0f0f0; /* ✅ Add background to see it */
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .phone {
+    display: grid;
+    grid-template-areas: 
+      "top middle"; /* ✅ remove 'bottom' from layout */
+    grid-template-columns: 2fr 8fr;
+    grid-template-rows: auto;
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+
+  .pos_top {
+    grid-area: top;
+    max-width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .pos_mid1 {
+    grid-area: middle;
+    height: 100vh;
+    overflow: auto;
+  }
+
+  .pos_bottom {
+    display: none !important; /* ✅ hide completely, no layout space */
+  }
+}
+

@@ -1,0 +1,78 @@
+/* =============== HARD BORDER + GLOW HOVER STYLING =============== */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--text-titles);
+  margin-bottom: 40px;
+}
+
+.section {
+  max-width: 600px;
+  margin-bottom: 40px;
+  padding: 24px;
+  background-color: var(--background-color-box);
+  border-radius: 14px;
+
+  /* ✅ HARD VISIBLE BORDER */
+  border: 2px solid var(--box-border); /* e.g. #00ffff or bright neon */
+  
+  /* ✅ BASE GLOW (subtle) */
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.section:hover {
+  transform: translateY(-6px);
+
+  /* ✅ BACKGROUND GLOW ON HOVER */
+  background-color: rgba(0, 255, 255, 0.05);
+  box-shadow: 0 0 18px var(--background-toggle-color-btn);
+
+  /* ✅ BRIGHTEN BORDER ON HOVER */
+  border-color: var(--background-toggle-color-btn);
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-titles);
+  margin-bottom: 12px;
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--text-subtitles);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.startButton {
+  padding: 12px 24px;
+  background-color: var(--background-toggle-color-btn);
+  color: var(--text-btn);
+  border: 2px solid var(--background-toggle-color-btn);
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 0 12px var(--background-toggle-color-btn);
+  transition: all 0.25s ease;
+}
+
+.startButton:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 20px var(--background-toggle-color-btn);
+  opacity: 0.95;
+}

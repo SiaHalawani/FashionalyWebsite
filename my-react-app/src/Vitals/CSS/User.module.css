@@ -1,0 +1,268 @@
+/* Main user container with proper padding and max-width for centering */
+.userContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px; /* Ensure container doesn't stretch too far */
+  overflow-y: auto; /* Enable vertical scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling for iOS */
+  height: 100vh; /* Ensure the container fills the screen height */
+}
+
+/* Profile Section Styling */
+.profileTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+/* Profile Picture Container */
+.profilePicContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+
+/* Profile Picture Styling */
+.profilePic {
+  border-radius: 50%;
+  border: 2px solid #8b5cf6;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+/* Edit Profile Button Styling */
+.editBtn {
+  margin-top: 8px;
+  padding: 4px 12px;
+  font-size: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--background-color-btn);
+  color: var(--text-btn);
+  cursor: pointer;
+}
+
+/* Profile Stats Section Styling */
+.profileStats {
+  flex-grow: 1;
+  min-width: 180px;
+}
+
+/* Username Styling */
+.username {
+  font-size: 18px;
+  margin: 4px 0;
+  color: var(--text-titles);
+}
+
+/* User Bio Styling */
+.userbio {
+  font-size: 13px;
+  margin: 2px 0;
+  color: var(--text-subtitles);
+}
+
+/* User Info and Location Styling */
+.userinfo,
+.userlocation {
+  font-size: 12px;
+  color: var(--text-subtitles);
+}
+
+/* Follow Stats Styling */
+.followStats {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  min-width: 100px;
+  color: var(--text-titles);
+}
+
+.followStats div {
+  margin-bottom: 10px;
+}
+
+/* Body Page Styling */
+.userbodypage {
+  padding: 10px 20px;
+  background-color: var(--background-color);
+  flex-grow: 1; /* Ensures content grows */
+  overflow-y: auto; /* Allow scrolling */
+  height: calc(100vh - 120px); /* Ensure it fits inside the screen while allowing scrolling */
+}
+
+/* Tab Navigation Styling */
+.navTabs {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Tab Item Styling */
+.tabItem {
+  font-size: 14px;
+  padding: 6px 10px;
+  color: var(--text-subtitles);
+  cursor: pointer;
+}
+
+/* Active Tab Styling */
+.activeTab {
+  font-size: 14px;
+  padding: 6px 10px;
+  font-weight: bold;
+  border-bottom: 2px solid #8b5cf6;
+  color: #8b5cf6;
+  cursor: pointer;
+}
+
+/* Links Bar Styling */
+.linksBar {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  gap: 12px;
+}
+
+/* Link Item Styling */
+.linkItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  width: 70px;
+  text-align: center;
+  color: var(--text-subtitles);
+}
+
+/* Delete Button Styling */
+.deleteBtn {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 16px;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+/* Add Item Button Styling */
+.addBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 32px;
+  color: var(--text-subtitles);
+  background-color: var(--background-color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+/* Add Item Button Hover Effect */
+.addBtn:hover {
+  background-color: #ddd;
+}
+
+/* Tab Content Styling */
+.tabContent {
+  margin-top: 15px;
+}
+
+/* Item Grid Layout */
+.gridItems {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); /* Ensure columns resize based on screen size */
+  gap: 12px;
+  padding: 10px 0;
+}
+
+/* Item Box Styling */
+.itemBox {
+  background-color: var(--background-color-box);
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  min-height: 160px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
+}
+
+/* Item Box Hover Effect */
+.itemBox:hover {
+  transform: translateY(-2px);
+}
+
+/* Image Styling in Item Box */
+.itemBox img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+/* Item Label Styling */
+.itemLabel {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 4px;
+  color: var(--text-box);
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Item Subtitle Styling */
+.itemSub {
+  font-size: 11px;
+  color: var(--text-box);
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Fix scrolling on mobile */
+@media (max-width: 768px) {
+  /* Ensuring mobile users can scroll the content */
+  .userContainer {
+    height: 100vh; /* Ensure full screen height for mobile */
+    overflow-y: auto; /* Ensure scrolling */
+    padding: 10px; /* Adjust padding for mobile */
+  }
+
+  /* Ensure smooth scrolling works on mobile */
+  .userbodypage {
+    overflow-y: auto;
+    height: auto; /* Allow it to expand for scrolling */
+  }
+
+  .gridItems {
+    padding: 0;
+  }
+
+  .itemBox {
+    padding: 8px;
+    min-height: 150px;
+  }
+}

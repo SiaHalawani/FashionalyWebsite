@@ -1,0 +1,127 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 40px;
+    min-height: 100vh;
+    background-color: var(--background-color);
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--text-titles);
+    margin-bottom: 40px;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 40px;
+    max-width: 1100px;
+    width: 100%;
+  }
+  
+  .section {
+    padding: 20px;
+    background-color: var(--background-color-box);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    color: var(--text-box);
+  }
+  
+  .section:hover {
+    transform: translateY(-4px);
+  }
+  
+  .sectionBottom {
+    grid-column: 1 / span 2;
+    padding: 30px;
+    background-color: var(--background-color-box);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    color: var(--text-box);
+  }
+  
+  .subtitle {
+    font-size: 1.6rem;
+    color: var(--text-titles);
+    margin-bottom: 10px;
+  }
+  
+  .description {
+    font-size: 1rem;
+    color: var(--text-subtitles);
+    margin-bottom: 20px;
+  }
+  
+  .startButton {
+    padding: 12px 24px;
+    background-color: var(--background-color-btn);
+    color: var(--text-btn);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .startButton:hover {
+    background-color: var(--background-color-btn-hover, #555);
+  }
+  
+  @media screen and (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .sectionBottom {
+      grid-column: 1;
+    }
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .form input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: var(--background-color-secondary);
+    color: var(--text-body);
+    font-size: 14px;
+  }
+  
+  .form input:focus {
+    outline: 2px solid var(--background-color-btn);
+  }
+  
+  .formButtons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    justify-content: center;
+  }
+  
+  .backButton {
+    padding: 12px 24px;
+    background-color: transparent;
+    color: var(--text-subtitles);
+    border: 1px solid var(--text-subtitles);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .backButton:hover {
+    background-color: var(--background-color-secondary);
+  }
+  

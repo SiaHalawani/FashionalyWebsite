@@ -1,0 +1,114 @@
+.storyPopup {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  
+  background-blend-mode: multiply;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.storyImage {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  /* 👇 fade-out top and bottom edges */
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+}
+
+.progressBarWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--text-titles);
+  transition: width 0.05s linear;
+}
+
+.overlayText {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  color: var(--text-titles);
+  font-size: 14px;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.username {
+  font-weight: bold;
+}
+
+.caption {
+  margin-top: 4px;
+}
+.progressBarWrapper {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+  z-index: 10;
+}
+
+.progressSegment {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.2);
+  height: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background: white;
+  transition: width 0.05s linear;
+}
+/* in StoryPopup.module.css */
+.progressCounter {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 13px;
+  color: var(--text-subtitles);
+  background: rgba(0,0,0,0.5);
+  padding: 3px 8px;
+  border-radius: 8px;
+}
+/* StoryPopup.module.css */
+.progressBarWrapper {
+  display: flex;
+  gap: 4px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+.progressSegment {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.3);
+  height: 3px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: white;
+  transition: width 0.06s linear;
+}

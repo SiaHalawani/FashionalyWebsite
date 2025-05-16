@@ -1,0 +1,22 @@
+{
+  "name": "databases",
+  "version": "1.0.0",
+  "main": "firebase.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.8.4",
+    "cors": "^2.8.5",
+    "firebase-admin": "^13.2.0"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0"
+  }
+}

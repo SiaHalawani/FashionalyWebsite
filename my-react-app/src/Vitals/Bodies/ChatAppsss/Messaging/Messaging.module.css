@@ -1,0 +1,254 @@
+/* ====================== */
+/* === MAIN LAYOUT ==== */
+/* ====================== */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--background-color);
+}
+
+/* ====================== */
+/* === CHAT HEADER ==== */
+/* ====================== */
+.chatHeader {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: var(--background-color-secondary);
+  border-bottom: 1px solid var(--background-color-box);
+  gap: 16px;
+}
+
+.profilePic {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--text-subtitles);
+}
+
+.chatUserInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chatUsername {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-titles);
+}
+
+.chatLocation {
+  font-size: 0.82rem;
+  color: var(--text-subtitles);
+  opacity: 0.8;
+}
+
+/* ====================== */
+/* === MESSAGES AREA === */
+/* ====================== */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--background-color);
+}
+
+.message {
+  max-width: 65%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.incoming {
+  align-self: flex-start;
+}
+
+.outgoing {
+  align-self: flex-end;
+  text-align: right;
+}
+
+/* ====================== */
+/* === BUBBLES + HOVER === */
+/* ====================== */
+.bubble {
+  padding: 12px 16px;
+  border-radius: 14px;
+  background-color: var(--background-color-box);
+  color: var(--text-body);
+  font-size: 0.94rem;
+  line-height: 1.5;
+  user-select: none;
+  position: relative;
+  transition: background 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.outgoing .bubble {
+  background-color: var(--background-toggle-color-btn);
+  color: var(--toggle-fg);
+}
+
+.deletedMessage {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-subtitles);
+  opacity: 0.6;
+}
+
+/* Timestamp */
+.timestamp {
+  font-size: 0.75rem;
+  margin-top: 6px;
+  opacity: 0.6;
+  color: var(--text-subtitles);
+}
+
+/* ====================== */
+/* === HOVER ACTIONS === */
+/* ====================== */
+.hoverActions {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: all 0.2s ease;
+  z-index: 2;
+}
+
+.message:hover .hoverActions {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.actionBtn {
+  background: var(--background-color-box);
+  padding: 6px;
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  color: var(--text-subtitles);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actionBtn:hover {
+  background: var(--accent-color);
+  color: white;
+  transform: scale(1.2);
+}
+
+/* ====================== */
+/* === INPUT AREA ====== */
+/* ====================== */
+.inputArea {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  background-color: var(--background-color-secondary);
+  border-top: 1px solid var(--background-color-box);
+  gap: 12px;
+}
+
+.input {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  border: 1px solid var(--background-color-box);
+  background-color: var(--background-color);
+  color: var(--text-body);
+}
+
+/* ====================== */
+/* === BUTTONS ========== */
+/* ====================== */
+button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.85rem;
+  background-color: var(--background-toggle-color-btn);
+  color: var(--toggle-fg);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+
+.reactionRow {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+  justify-content: flex-start;
+}
+
+.outgoing .reactionRow {
+  justify-content: flex-end;
+}
+
+.reactionEmoji {
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.reactionEmoji:hover {
+  transform: scale(1.3);
+}
+
+
+/* ====================== */
+/* === EMOJI REACTIONS === */
+/* ====================== */
+
+.emojiPopup {
+  position: absolute;
+  top: -42px;
+  right: 0;
+  display: flex;
+  gap: 6px;
+  padding: 6px 10px;
+  background-color: var(--background-color-box);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--background-color-box);
+  z-index: 9999; /* Very high */
+}
+
+
+.emojiChoice {
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.emojiChoice:hover {
+  transform: scale(1.3);
+}
+
+.reactionDisplay {
+  margin-top: 6px;
+  font-size: 1.2rem;
+  display: inline-block;
+}

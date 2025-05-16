@@ -1,0 +1,96 @@
+/* =============== ENHANCED NEON GRID WRAPPER =============== */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--text-titles);
+  margin-bottom: 40px;
+}
+
+/* ✅ Grid Layout */
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 24px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.gridContainer .section:nth-child(3) {
+  grid-column: 1 / -1;
+}
+
+.section {
+  background-color: var(--background-color-box);
+  padding: 20px;
+  border-radius: 12px;
+
+  /* ✅ Visible, hard border and neon base */
+  border: 2px solid var(--box-border);
+  box-shadow: var(--box-shadow);
+
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.section:hover {
+  transform: translateY(-6px);
+  background-color: rgba(0, 255, 255, 0.05);
+  border-color: var(--background-toggle-color-btn);
+  box-shadow: 0 0 20px var(--background-toggle-color-btn);
+}
+
+.subtitle {
+  font-size: 1.6rem;
+  color: var(--text-titles);
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--text-subtitles);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.startButton {
+  padding: 10px 20px;
+  background-color: var(--background-toggle-color-btn);
+  color: var(--text-btn);
+  border: 2px solid var(--background-toggle-color-btn);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 12px var(--background-toggle-color-btn);
+  transition: all 0.25s ease;
+}
+
+.startButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--background-toggle-color-btn);
+  opacity: 0.95;
+}
+
+/* 📱 Responsive fallback: stack vertically on small screens */
+@media screen and (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .gridContainer .section:nth-child(3) {
+    grid-column: auto;
+  }
+}

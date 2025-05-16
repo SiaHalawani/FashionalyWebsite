@@ -1,0 +1,36 @@
+.landing {
+    display: grid;
+    grid-template-areas: 
+        "middle "
+        "bottom ";
+   
+    grid-template-rows:  7fr 3fr;
+    max-width: 100wh;
+    max-height: 100vh;
+}
+
+
+
+
+.pos_mid1 {
+    grid-area: middle;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    max-height: 70vh;
+}
+
+.pos_bottom {
+    grid-area: bottom;
+}
+ .pos_bottom {
+    display: flex;
+    justify-content: bottom;
+    flex-direction: column;
+    align-items: center;
+    height: 30vh;
+    text-align: center;
+} 
+
+
+ 

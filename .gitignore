@@ -1,0 +1,5 @@
+node_modules/
+my-react-app/src/BackendIntegration/OpenAi.js
+backend/AI_CHATBOT/API/.env
+databases/firebase/firebase.js
+databases/firebase/serviceAccountKey.json

@@ -1,0 +1,167 @@
+.adContainer {
+  height: 100vh;
+  padding: 2rem;
+  background-color: var(--background-color);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adBox {
+  width: 100%;
+  max-width: 960px;
+  height: 90vh;
+  background: var(--background-color-box);
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+
+.backBtn {
+  margin: 1.25rem 0 0 1.5rem;
+  background-color: var(--background-color-secondary);
+  color: var(--text-subtitles);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+  align-self: flex-start;
+}
+
+.backBtn:hover {
+  background-color: var(--background-color-btn-hover);
+}
+
+.splitLayout {
+  display: flex;
+  flex: 1;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.leftPanel {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--background-color);
+}
+
+.rightPanel {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: var(--background-color);
+  border-left: 1px solid var(--background-color-secondary);
+}
+
+.postImage {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.username {
+  font-weight: bold;
+  margin-top: 1rem;
+  font-size: 15px;
+  color: var(--text-titles);
+}
+
+.caption {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-titles);
+  margin: 1rem 0;
+}
+
+.meta {
+  font-size: 14px;
+  color: var(--text-subtitles);
+  margin-bottom: 10px;
+}
+
+.infoBox {
+  background-color: var(--background-color-box);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 14px;
+  color: var(--text-subtitles);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.commentBox {
+  background-color: var(--background-color-box);
+  border-radius: 10px;
+  padding: 12px;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.commentItem {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--background-color-secondary);
+  padding-bottom: 6px;
+}
+
+.commentItem img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.commentForm {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.commentForm input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid var(--background-color-secondary);
+  background-color: var(--background-color-box);
+  color: var(--text-box);
+}
+
+.commentForm button {
+  background-color: var(--background-color-btn);
+  color: var(--text-btn);
+  border: none;
+  padding: 10px 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.commentForm button:hover {
+  background-color: var(--background-color-btn-hover);
+}
+
+.sellerBox {
+  background-color: var(--background-color-box);
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-subtitles);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}

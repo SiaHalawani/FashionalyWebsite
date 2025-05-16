@@ -1,0 +1,29 @@
+.followBtn {
+  background-color: var(--background-color-btn);
+  color: var(--text-btn);
+  padding: 6px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  text-transform: none;
+  line-height: 1.2;
+}
+
+.followBtn:hover {
+  background-color: var(--background-color-btn-hover, #444);
+  transform: translateY(-1px);
+}
+
+.followBtn.following {
+  background-color: var(--background-color-box);
+  color: var(--text-subtitles);
+  border: 1px solid var(--text-subtitles);
+}
+
+.followBtn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

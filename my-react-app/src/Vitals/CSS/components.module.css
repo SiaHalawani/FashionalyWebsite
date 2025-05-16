@@ -1,0 +1,216 @@
+
+.title{
+    color: var(--text-titles);
+}
+.logo{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+   
+}
+
+.box{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--background-color-box);
+    color: var(--text-box);
+}
+
+.mainbg{
+    background-color: var(--background-color);
+    color: var(--text-body);
+    height: 100%;
+}
+
+.btn{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--background-color-btn);
+    color: var(--text-btn);
+    cursor: pointer;
+}
+.image_track{
+    width: 30vh;
+    height: 40vh;
+    object-fit: cover;
+    object-position: 50% 50%;
+    user-select: none;
+    border-radius: 10px;
+    
+ 
+}
+.imagecontainer{
+    overflow: hidden;
+}
+
+
+
+/* form */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: var(--background-color-box);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form input,
+.form textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 15px;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.form input:focus,
+.form textarea:focus {
+    border-color: var(--focus-border-color);
+    outline: none;
+}
+
+.form .submit-btn {
+    padding: 12px;
+    border-radius: 10px;
+    background-color: var(--background-color-btn);
+    color: var(--text-btn);
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.form .submit-btn:hover {
+    background-color: var(--background-color-btn-hover);
+    transform: scale(1.05);
+}
+
+.title {
+    font-size: 24px;
+    text-align: center;
+    color: var(--text-titles);
+    padding-bottom: 20px;
+}
+
+
+
+.form .box {
+    display: flex;
+    padding: 25px;
+    background-color: var(--background-color-box);
+    border-radius: 12px;
+    color: var(--text-box);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+   
+}
+.footer{
+    padding: 25px;
+}
+/* end form */
+/* beggining of scroller */
+.mainbg {
+    background-color: var(--background-color);
+    color: var(--text-body);
+    height: 100%;
+    overflow: hidden; /* Hide overflow for the entire page */
+}
+
+/* Title */
+.title {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-titles);
+}
+
+/* Scrollable Feed Container */
+
+
+/* Individual Post Styling */
+.post {
+    background-color: var(--background-color-box);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+/* User Info Styling */
+.user {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+/* Image Styling */
+.postimage {
+    width: 35vh;
+    height: 35vh;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Description Styling */
+.description {
+    font-size: 14px;
+    color: var(--text-subtitles);
+}
+
+/* Loading Message Styling */
+.loading {
+    text-align: center;
+    font-size: 16px;
+    color: var(--text-body);
+}
+
+.collapsed .icon span {
+  opacity: 0 !important;
+  width: 0 !important;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+
+.addStoryCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px dashed var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: var(--accent);
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.plusIcon {
+  font-weight: bold;
+}
+
+.storyItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.storyImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}

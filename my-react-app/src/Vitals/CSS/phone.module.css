@@ -1,0 +1,73 @@
+@media screen and (max-width:  768px) {
+.phone {
+    display: grid;
+    grid-template-areas: 
+        "top top top" 
+        "middle middle middle"
+        "bottom bottom bottom";
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 2fr 12fr 2fr;
+    max-width: 100wh;
+    max-height: 100vh;
+}
+
+
+.pos_top {
+    grid-area: top;
+    max-height: 8vh;
+    min-height: 8vh;
+    overflow: hidden;
+}
+
+.pos_mid1 {
+    grid-area: middle;
+    height: 84vh;
+}
+
+.pos_bottom {
+    grid-area: bottom;
+}
+ .pos_bottom {
+    display: flex;
+    justify-content: bottom;
+    align-items: center;
+    height: 8vh;
+    text-align: center;
+} 
+}
+
+@media screen and (min-width: 768px) {
+    .phone {
+        display: grid;
+        grid-template-areas: 
+            "top middle bottom";
+        grid-template-columns: 2fr 8fr 2fr;
+        grid-template-rows: auto;
+        max-width: 100vw;
+        max-height: 100vh;
+    }
+
+    .pos_top {
+        grid-area: top;
+        max-width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .pos_mid1 {
+        grid-area: middle;
+        height: 100vh;
+        overflow: auto;
+    }
+
+    .pos_bottom {
+        grid-area: bottom;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        overflow: hidden;
+    }
+}

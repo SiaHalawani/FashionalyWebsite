@@ -1,0 +1,64 @@
+.popup {
+  padding: 20px;
+  background-color: var(--background-color-box);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  color: var(--text-box);
+  overflow-y: auto;
+  max-height: 95vh;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: var(--text-titles);
+  text-align: center;
+}
+
+.input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: var(--background-color-secondary);
+  color: var(--text-box);
+}
+
+.preview {
+  width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+  margin-top: 12px;
+  border-radius: 10px;
+  background-color: var(--background-color);
+  padding: 4px;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 16px;
+  background-color: var(--background-toggle-color-btn);
+  color: var(--text-btn);
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 8px;
+  text-align: center;
+}
