@@ -3,7 +3,8 @@ import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
 import { getUserById, followUser } from '../../../../BackendIntegration/AxiosConnections/UserGetConnections/UserAxios';
 import { checkIfFollowing, unfollowUser, getWardrobeItemsByUser } from './Axios';
-import Userstyle from '../../../CSS/User.module.css';
+import styles from './UserLinkPage.module.css';
+import fallbackPic from '../../../../../public/fallback.webp'; // adjust the path as needed
 
 export default function UserLinkPage() {
   const location = useLocation();
@@ -92,63 +93,95 @@ export default function UserLinkPage() {
   if (!userData) return <div>Loading...</div>;
 
   return (
-    <div className={Userstyle.userContainer}>
-      <div className={Userstyle.userheadpage}>
-        <div className={Userstyle.profileTop}>
-          <div className={Userstyle.profilePicContainer}>
-            <img
-              src={userData.profilePicture || '/src/assets/profilepic.png'}
-              alt="User"
-              className={Userstyle.profilePic}
-            />
-            <button className={Userstyle.editBtn} onClick={() => navigate(-1)}>Go Back</button>
-          </div>
-          <div className={Userstyle.profileStats}>
-            <p className={Userstyle.username}><b>{userData.username}</b></p>
-            <p className={Userstyle.userbio}>{userData.bio || 'No bio available.'}</p>
-            <p className={Userstyle.userinfo}>📧 {userData.email}</p>
-            {userData.location && <p className={Userstyle.userlocation}>{userData.location}</p>}
-            {currentUserID !== Number(userID) && (
-              isFollowing ? (
-                <button className={Userstyle.unfollowBtn} onClick={handleUnfollow}>Unfollow</button>
-              ) : (
-                <button className={Userstyle.followBtn} onClick={handleFollow}>Follow</button>
-              )
-            )}
-          </div>
-          <div className={Userstyle.followStats}>
-            <div><p><b>{userData.followersCount}</b></p><p>Followers</p></div>
-            <div><p><b>{userData.followingCount}</b></p><p>Following</p></div>
-            <div><p><b>{userData.verified ? '✔️' : '❌'}</b></p><p>Verified</p></div>
-          </div>
-        </div>
-      </div>
+    <div> <button className={styles.closeBtn} onClick={() => navigate(-1)}>×</button>
+  <div className={styles.userContainer}>
+   
 
-      <div className={Userstyle.userbodypage}>
-        <div className={Userstyle.navTabs}>
-          <div className={Userstyle.activeTab}>
-            {userData.items?.length || 0} Items
-          </div>
+    <div className={styles.userheadpage}>
+      <div className={styles.profileTop}>
+        {/* Profile Picture */}
+        <div className={styles.profilePicContainer}>
+          <img
+            src={userData.profilePicture || fallbackPic}
+
+            className={styles.profilePic}
+          />
         </div>
 
-        <div className={Userstyle.tabContent}>
-          <div className={Userstyle.gridItems}>
-            {userData.items?.map((item, index) => (
-              <div
-                key={index}
-                className={Userstyle.itemBox}
-                onClick={() => navigate(`/Fashop/UserItems/${item.itemID}`, { state: { background: location } })}
+        {/* User Info */}
+        <div className={styles.profileStats}>
+          <p className={styles.username}><b>{userData.username}</b></p>
+          <p className={styles.userbio}>{userData.bio || 'No bio available.'}</p>
 
-                style={{ cursor: 'pointer' }}
-              >
-                <img src={item.imageURL || '/src/assets/fallback.png'} alt={item.itemName} />
-                <p className={Userstyle.itemLabel}><b>{item.itemName}</b></p>
-                <p className={Userstyle.itemSub}>{item.color} • {item.material}</p>
-              </div>
-            ))}
+          <p className={styles.userinfo}>
+            📧 <a href={`mailto:${userData.email}`}>{userData.email}</a>
+          </p>
+
+          {userData.location && (
+            <p className={styles.userinfo}>
+              📍 <a href={`https://www.google.com/maps/search/${userData.location}`} target="_blank" rel="noreferrer">
+                {userData.location}
+              </a>
+            </p>
+          )}
+
+         {currentUserID !== Number(userID) && (
+  <button
+    className={`${styles.followToggleBtn} ${isFollowing ? styles.unfollow : styles.follow}`}
+    onClick={isFollowing ? handleUnfollow : handleFollow}
+  >
+    {isFollowing ? 'Unfollow' : 'Follow'}
+  </button>
+)}
+
+        </div>
+
+        {/* Status Section */}
+        <div className={styles.followStats}>
+          <div>
+            <p><b>{userData.followersCount}</b></p>
+            <p>Followers</p>
+          </div>
+          <div>
+            <p><b>{userData.followingCount}</b></p>
+            <p>Following</p>
+          </div>
+          <div>
+            <p><b>{userData.verified ? '✔️' : '❌'}</b></p>
+            <p>Verified</p>
           </div>
         </div>
       </div>
     </div>
-  );
+
+    <div className={styles.userbodypage}>
+      <div className={styles.navTabs}>
+        <div className={styles.activeTab}>{userData.items?.length || 0} Items</div>
+      </div>
+
+      <div className={styles.tabContent}>
+        <div className={styles.gridItems}>
+          {userData.items?.map((item, index) => (
+            <div
+              key={index}
+              className={styles.itemBox}
+              onClick={() => navigate(`/Fashop/UserItems/${item.itemID}`, { state: { background: location } })}
+            >
+              <img
+  src={userData.profilePicture || fallbackPic}
+  alt="User"
+  className={styles.profilePic}
+/>
+
+              <p className={styles.itemLabel}><b>{item.itemName}</b></p>
+              <p className={styles.itemSub}>{item.color} • {item.material}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+);
+
 }

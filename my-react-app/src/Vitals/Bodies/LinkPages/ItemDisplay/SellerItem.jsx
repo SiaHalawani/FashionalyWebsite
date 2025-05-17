@@ -8,7 +8,7 @@ import {
   getLastCategoryIDByWardrobeID
 } from '../../../../BackendIntegration/UserData/Editors/Edititem';
 import { useGlobalState } from '../../../../BackendIntegration/UserData/GeneralDataManagement';
-import styles from '../../../CSS/AdLinkPage.module.css';
+import styles from './AdLinkPage.module.css';
 
 export default function ItemLinkPage() {
   const { profileData } = useGlobalState();
@@ -79,87 +79,95 @@ export default function ItemLinkPage() {
     }
   };
 
-  return (
-    <div className={styles.adContainer}>
-      <div className={styles.adBox}>
-        <button className={styles.backBtn} onClick={() => navigate(-1)}>← Go Back</button>
-        <h1 className={styles.header}>{seller?.SellerBrandName || 'Item'}</h1>
+return (
+  <div className={styles.overlay}>
+    <div className={styles.popup}>
+      <button className={styles.closeButton} onClick={() => navigate(-1)}>×</button>
 
-        {item ? (
-          <div className={styles.splitLayout}>
-            <div className={styles.leftPanel}>
-              <img src={item.image} alt="Item" className={styles.postImage} />
-              <p className={styles.username}>@{seller?.SellerBrandName}</p>
+      {item && seller ? (
+        <div className={styles.content}>
+          <div className={styles.imageSection}>
+            <div
+              className={styles.imageBlurBackground}
+              style={{ backgroundImage: `url(${item.image})` }}
+            />
+            <img src={item.image} alt="Item" className={styles.adImage} />
+            <p className={styles.username}>@{seller.SellerBrandName}</p>
+          </div>
+
+          <div className={styles.metaSection}>
+            <h2 className={styles.caption}>{item.itemname}</h2>
+
+            <div className={styles.meta}>
+              <p><strong>Price:</strong> ${item.price}</p>
             </div>
 
-            <div className={styles.rightPanel}>
-              <h2 className={styles.caption}>{item.itemname}</h2>
-              <div className={styles.meta}>
-                <p><strong>Price:</strong> ${item.price}</p>
-              </div>
+            <h3>Item Details</h3>
+            <div className={styles.infoBox}>
+              <p><strong>Category:</strong> {item.category}</p>
+              <p><strong>Material:</strong> {item.material}</p>
+              <p><strong>Occasion:</strong> {item.occasion}</p>
+              <p><strong>Type:</strong> {item.type}</p>
+              <p><strong>Essential:</strong> {item.essential ? 'Yes' : 'No'}</p>
+              <p><strong>Temperature Range:</strong> {item.temperature_range?.join(' – ')}°C</p>
+              <p><strong>Gender:</strong> {item.gender}</p>
+              <p><strong>Brand:</strong> {item.brand}</p>
+            </div>
 
-              <h3>Item Details</h3>
-              <div className={styles.infoBox}>
-                <p><strong>Category:</strong> {item.category}</p>
-                <p><strong>Material:</strong> {item.material}</p>
-                <p><strong>Occasion:</strong> {item.occasion}</p>
-                <p><strong>Type:</strong> {item.type}</p>
-                <p><strong>Essential:</strong> {item.essential ? 'Yes' : 'No'}</p>
-                <p><strong>Temperature Range:</strong> {item.temperature_range?.join(' – ')}°C</p>
-                <p><strong>Gender:</strong> {item.gender}</p>
-                <p><strong>Brand:</strong> {item.brand}</p>
-              </div>
+            <div className={styles.actions}>
+              <button className={styles.moreBtn} onClick={handleAddAsPreset}>Add as Preset</button>
+              <button className={styles.moreBtn}>Add to Cart</button>
+            </div>
 
-              <div style={{ display: 'flex', gap: '1rem', margin: '1rem 0' }}>
-                <button className={styles.moreBtn} onClick={handleAddAsPreset}>
-                  Add as Preset
-                </button>
-                <button className={styles.moreBtn} onClick={() => console.log('Add to Cart clicked')}>
-                  Add to Cart
-                </button>
-              </div>
-
-              {seller && (
-                <div className={styles.sellerBox}>
-                  <h3>Seller Info</h3>
-                  <p><strong>Brand:</strong> {seller.SellerBrandName}</p>
-                  <p><strong>Name:</strong> {seller.SellerName}</p>
-                  <p><strong>Email:</strong> {seller.SellerEmail}</p>
-                  <p><strong>Phone:</strong> {seller.Sellerphone}</p>
-                  <p><strong>Instagram:</strong> {seller.SellerInstagram}</p>
-                  <p><strong>Website:</strong> {seller.Sellerwebsite}</p>
-                  <p><strong>Verified:</strong> {seller.verified ? 'Yes' : 'No'}</p>
-                  <p><strong>Joined:</strong> {new Date(seller.joined).toLocaleDateString()}</p>
-
-                  <div className={styles.stats}>
-                    <p><strong>Sales:</strong> {seller.stats.sales}</p>
-                    <p><strong>Revenue:</strong> {seller.stats.revenue}</p>
-                    <p><strong>Followers:</strong> {seller.stats.followers}</p>
-                    <p><strong>Orders:</strong> {seller.stats.orders}</p>
-                    <p><strong>Returns:</strong> {seller.stats.returns}</p>
-                    <p><strong>Rating:</strong> {seller.stats.rating}</p>
+            <div className={styles.sellerInfo}>
+              <h4>Seller Info</h4>
+              <div className={styles.sellerGrid}>
+                {[
+                  { label: 'Brand', value: seller.SellerBrandName },
+                  { label: 'Name', value: seller.SellerName },
+                  { label: 'Email', value: seller.SellerEmail },
+                  { label: 'Phone', value: seller.Sellerphone },
+                  { label: 'Instagram', value: seller.SellerInstagram },
+                  { label: 'Website', value: seller.Sellerwebsite },
+                  { label: 'Verified', value: seller.verified ? 'Yes' : 'No' },
+                  { label: 'Joined', value: new Date(seller.joined).toLocaleDateString() }
+                ].map((field, index) => (
+                  <div key={index} className={styles.sellerField}>
+                    <label>{field.label}</label>
+                    <p>{field.value}</p>
                   </div>
+                ))}
+              </div>
 
-                  <button
-                    className={styles.moreBtn}
-                    onClick={() =>
-                      navigate(`/Fashop/Seller/${seller.SellerBrandName}`, {
-                        state: { background: location }
-                      })
-                    }
-                  >
-                    View More from Seller
-                  </button>
-                </div>
-              )}
+              <div className={styles.stats}>
+                <p><strong>Sales:</strong> {seller.stats.sales}</p>
+                <p><strong>Revenue:</strong> {seller.stats.revenue}</p>
+                <p><strong>Followers:</strong> {seller.stats.followers}</p>
+                <p><strong>Orders:</strong> {seller.stats.orders}</p>
+                <p><strong>Returns:</strong> {seller.stats.returns}</p>
+                <p><strong>Rating:</strong> {seller.stats.rating}</p>
+              </div>
+
+              <button
+                className={styles.sellerButton}
+                onClick={() =>
+                  navigate(`/Fashop/Seller/${seller.SellerBrandName}`, {
+                    state: { background: location }
+                  })
+                }
+              >
+                View More from Seller
+              </button>
             </div>
           </div>
-        ) : (
-          <p>Loading item data...</p>
-        )}
-      </div>
+        </div>
+      ) : (
+        <p className={styles.loading}>Loading item data...</p>
+      )}
     </div>
-  );
+  </div>
+);
+
 }
 
 

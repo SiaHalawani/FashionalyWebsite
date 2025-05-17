@@ -4,7 +4,7 @@ import { markNotificationAsRead } from '../../../../../BackendIntegration/AxiosC
 import { useNotifications } from '../../../../contexts/NotificationContext';
 
 import styles from '../../../../CSS/notifications.module.css';
-
+import fallbackPic from '../../../../../../public/fallback.webp'; // adjust the path as needed
 export default function Notifications() {
   const { notifications, fetchNotifications } = useNotifications();
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ export default function Notifications() {
           className={`${styles.notificationCard} ${note.read ? styles.read : styles.unread}`}
           onClick={() => handleMarkRead(note.id)}
         >
-          <img
+          {/* <img
             src={note.actor.profilePicture}
             alt={note.actor.username}
             className={styles.avatar}
@@ -36,7 +36,22 @@ export default function Notifications() {
               e.stopPropagation();
               navigate(`/User/${note.actor.userID}`);
             }}
-          />
+          /> */}
+
+          <img
+  src={note.actor.profilePicture}
+  alt={note.actor.username}
+  className={styles.avatar}
+  onError={(e) => {
+    e.target.onerror = null; // prevent infinite loop in case fallback also fails
+    e.target.src = '/fallbackpic.png'; // path to fallback image in public folder
+  }}
+  onClick={(e) => {
+    e.stopPropagation();
+    navigate(`/User/${note.actor.userID}`);
+  }}
+/>
+
           <div className={styles.messageWrapper}>
             <div className={styles.textSection}>
               <p className={styles.message}>{note.message}</p>

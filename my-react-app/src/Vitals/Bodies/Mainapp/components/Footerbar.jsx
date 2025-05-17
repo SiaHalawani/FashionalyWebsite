@@ -9,6 +9,7 @@ import { useGlobalState } from '../../../../BackendIntegration/UserData/GeneralD
 
 import containers from '../../../CSS/containers.module.css';
 import styles from '../../../CSS/button.module.css';
+import fallbackPic from '../../../../../public/fallback.webp'; // adjust the path as needed
 
 export default function Footer() {
   const { profileData } = useGlobalState();
@@ -45,7 +46,7 @@ export default function Footer() {
       {/* === Desktop View === */}
       <div className={containers.desktopOnly} style={{ flex: 1 }}>
         <div className={containers.userSection}>
-          <img src={currentUser.profilePicture || '/src/assets/default-avatar.png'} alt={currentUser.username} />
+          <img src={currentUser.profilePicture || fallbackPic} alt={currentUser.username} />
           <div className={containers.userInfo}>
             <p className={containers.username}>{currentUser.username}</p>
             <p className={containers.displayName}>{currentUser.fullName}</p>
@@ -63,7 +64,7 @@ export default function Footer() {
               <div key={user.userID} className={containers.suggestUser} style={{ position: 'relative' }}>
                 <Link to={`/Fashop/User/${user.userID}`} style={styles.link}>
                   <img
-                    src={user.profilePicture || '/src/assets/default-avatar.png'}
+                    src={user.profilePicture || fallbackPic}
                     alt={user.username}
                     style={styles.profileImage}
                   />

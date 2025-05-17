@@ -12,7 +12,7 @@ import {
   submitComment
 } from '../../../../BackendIntegration/LikeComment/Comments';
 import { useGlobalState } from '../../../../BackendIntegration/UserData/GeneralDataManagement';
-import styles from '../../../CSS/AdLinkPage.module.css';
+import styles from './AdLinkPage.module.css';
 
 export default function PostLinkPage() {
   const { postId } = useParams();
@@ -87,88 +87,76 @@ useEffect(() => {
   };
 
   return (
-    <div className={styles.adContainer}>
-      <div className={styles.adBox}>
-             {post ? (
-  <div className={styles.splitLayout}>
-  
-    <div className={styles.leftPanel}>
-         <button className={styles.backBtn} onClick={() => navigate(-1)}>← Go Back</button>
-        <h1 className={styles.header}> {user?.username}</h1>
+  <div className={styles.overlay}>
+    <div className={styles.popup}>
+      <button className={styles.closeButton} onClick={() => navigate(-1)}>×</button>
 
- 
-      <img src={post.postImageURL} alt="Post visual" className={styles.postImage} />
-      <p className={styles.username}>@{user?.username}</p>
-    </div>
+      {post && user ? (
+        <div className={styles.content}>
+          <div className={styles.imageSection}>
+            <div
+              className={styles.imageBlurBackground}
+              style={{ backgroundImage: `url(${post.postImageURL})` }}
+            />
+            <img src={post.postImageURL} alt="Post" className={styles.adImage} />
+            <p className={styles.username}>@{user.username}</p>
+          </div>
 
-    <div className={styles.rightPanel}>
-      <h2 className={styles.caption}>{post.postContent}</h2>
-     
+          <div className={styles.metaSection}>
+            <h2 className={styles.caption}>{post.postContent}</h2>
 
-     <h3>Comments ({commentCount})</h3>
-<div className={styles.commentBox}>
-  {comments.length === 0 ? (
-    <p>No comments yet.</p>
-  ) : (
-    comments.map((c, idx) => (
-      <div key={idx} className={styles.commentItem}>
-        {c.user?.profilePicture ? (
-          <img src={c.user.profilePicture} alt="User" />
-        ) : (
-          <div
-            style={{
-              width: "28px",
-              height: "28px",
-              borderRadius: "50%",
-              backgroundColor: "#ccc",
-              marginRight: "10px",
-            }}
-          />
-        )}
-        <div>
-          <strong>@{c.user?.username}</strong>
-          <p style={{ margin: 0, fontSize: "13px", color: "#444" }}>
-            {c.commentText}
-          </p>
+            <div className={styles.meta}>
+              <button onClick={handleLike} disabled={likeLoading}>
+                {liked ? '💖' : '🤍'} ({likesCount})
+              </button>
+            </div>
+
+            <h3>Comments ({commentCount})</h3>
+            <div className={styles.commentBox}>
+              {comments.length === 0 ? (
+                <p>No comments yet.</p>
+              ) : (
+                comments.map((c, idx) => (
+                  <div key={idx} className={styles.commentItem}>
+                    {c.user?.profilePicture ? (
+                      <img src={c.user.profilePicture} alt="User" />
+                    ) : (
+                      <div className={styles.defaultAvatar} />
+                    )}
+                    <div>
+                      <strong>@{c.user?.username}</strong>
+                      <p>{c.commentText}</p>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+
+            <div className={styles.commentForm}>
+              <input
+                type="text"
+                value={commentText}
+                onChange={(e) => setCommentText(e.target.value)}
+                placeholder="Write a comment..."
+              />
+              <button onClick={handleCommentSubmit}>Post</button>
+            </div>
+
+            <div className={styles.infoBox}>
+              <p><strong>Username:</strong> {user.username}</p>
+              <p><strong>Email:</strong> {user.email}</p>
+              <p><strong>Created:</strong> {new Date(post.createdAt).toLocaleDateString()}</p>
+              <button onClick={() => navigate(`/Fashop/User/${user.userID}`)}>
+                View Profile
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    ))
-  )}
-</div>
-
-
-      <div className={styles.commentForm}>
-           <div className={styles.meta}>
-        <button onClick={handleLike} disabled={likeLoading}>
-          {liked ? '💖' : '🤍'} ({likesCount})
-        </button>
-      </div>
-        <input
-          type="text"
-          value={commentText}
-          onChange={(e) => setCommentText(e.target.value)}
-          placeholder="Write a comment..."
-        />
-        <button onClick={handleCommentSubmit}>Post</button>
-      
-      </div>
-
-      <div className={styles.infoBox}>
-        <p><strong>Username:</strong> {user?.username}</p>
-        <p><strong>Email:</strong> {user?.email}</p>
-        <p><strong>Created:</strong> {new Date(post.createdAt).toLocaleDateString()}</p>
-        <button onClick={() => navigate(`/Fashop/User/${user?.userID}`)}>
-          View Profile
-        </button>
-      </div>
-
+      ) : (
+        <p className={styles.loading}>Loading post data...</p>
+      )}
     </div>
   </div>
-) : (
-  <p>Loading post data...</p>
-)}
+);
 
-      </div>
-    </div>
-  );
 }

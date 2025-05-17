@@ -1,0 +1,294 @@
+.userContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  margin: 0 auto;
+  max-width: 1200px;
+  height: 100vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-color: var(--background-color);
+}
+
+/* ── Profile Header ─────────────────────────────────────── */
+.userheadpage {
+  background-color: var(--background-color-box);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.profileTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.profilePicContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.profilePic {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--text-titles);
+}
+
+.editBtn {
+  padding: 6px 14px;
+  font-size: 12px;
+  background-color: var(--background-color-btn);
+  color: var(--text-btn);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.editBtn:hover {
+  background-color: var(--background-toggle-color-btn);
+}
+
+.profileStats {
+  flex-grow: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.username {
+  font-size: 18px;
+  color: var(--text-titles);
+  margin: 0;
+}
+
+.userbio {
+  font-size: 13px;
+  color: var(--text-subtitles);
+}
+
+.userinfo,
+.userlocation {
+  font-size: 12px;
+  color: var(--text-subtitles);
+}
+
+/* ── Follow & Stats ─────────────────────────────────────── */
+.followStats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 120px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.followStats div {
+  font-size: 12px;
+  color: var(--text-subtitles);
+}
+
+.followStats div p:first-child {
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--text-titles);
+  margin: 0;
+}
+
+/* ── Main Body ───────────────────────────────────────────── */
+.userbodypage {
+  flex-grow: 1;
+  background-color: var(--background-color);
+  padding: 16px 0;
+  overflow-y: auto;
+}
+
+/* ── Navigation Tabs ─────────────────────────────────────── */
+.navTabs {
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--background-color-secondary);
+}
+
+.activeTab {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--text-titles);
+  border-bottom: 2px solid var(--text-titles);
+  padding-bottom: 4px;
+  display: inline-block;
+}
+
+/* ── Category Links ─────────────────────────────────────── */
+.linksBar {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 12px 0;
+  gap: 14px;
+}
+
+.linkItem {
+  font-size: 13px;
+  padding: 6px 12px;
+  background-color: var(--background-color-box);
+  color: var(--text-subtitles);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.linkItem:hover {
+  background-color: var(--background-toggle-color-btn);
+  color: var(--text-titles);
+}
+
+/* ── Tab Content ─────────────────────────────────────────── */
+.tabContent {
+  padding: 10px 0;
+}
+
+.gridItems {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+  padding: 10px 0;
+}
+
+.itemBox {
+  background-color: var(--background-color-box);
+  border: 1px solid var(--background-color-secondary);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.itemBox:hover {
+  transform: translateY(-2px);
+}
+
+.itemBox img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.itemLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-titles);
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemSub {
+  font-size: 11px;
+  color: var(--text-subtitles);
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Mobile Responsive ───────────────────────────────────── */
+@media (max-width: 768px) {
+  .userContainer {
+    padding: 12px;
+    height: 100vh;
+  }
+
+  .gridItems {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  .profileTop {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .followStats {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+.userinfo a {
+  color: var(--text-subtitles);
+  text-decoration: none;
+}
+
+.userinfo a:hover {
+  color: var(--text-titles);
+  text-decoration: underline;
+}
+
+.rateButton {
+  margin-top: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  background-color: var(--background-color-btn);
+  color: var(--text-btn);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.rateButton:hover {
+  background-color: var(--toggle-bg);
+  color: var(--toggle-fg);
+}.ratingStars {
+  display: flex;
+  gap: 10px;
+  font-size: 48px; /* 🚀 Bigger stars */
+  margin-top: 12px;
+  user-select: none;
+}
+
+.starFilled {
+  color: gold;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+
+.starEmpty {
+  color: #444;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+
+.starFilled:hover,
+.starEmpty:hover {
+  transform: scale(1.05); /* Subtle interaction effect */
+}
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  left: 20px; /* Changed from right: to left: */
+  background: none;
+  border: none;
+  font-size: 36px; /* Bigger for visibility */
+  color: var(--text-subtitles);
+  cursor: pointer;
+  z-index: 1000;
+  transition: color 0.2s ease;
+}
+
+.closeBtn:hover {
+  color: var(--text-titles);
+}

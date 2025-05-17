@@ -124,7 +124,7 @@ import axios from 'axios';
 import styles from './Messaging.module.css';
 import { Copy, Smile, Trash2 } from 'lucide-react';
 import { getAllUsers } from '../../../../BackendIntegration/AxiosConnections/UserGetConnections/UserAxios';
-
+import fallbackPic from '../../../../../public/fallback.webp'; // adjust the path as needed
 export default function MessagingInterface({ userId, chatWithId }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
@@ -222,7 +222,12 @@ export default function MessagingInterface({ userId, chatWithId }) {
     <div className={styles.container}>
       {matchedUser && (
         <div className={styles.chatHeader}>
-          <img src={matchedUser.profilePicture} className={styles.profilePic} alt="user" />
+         <img
+  src={matchedUser.profilePicture || fallbackPic}
+  className={styles.profilePic}
+  alt="user"
+/>
+
           <div className={styles.chatUserInfo}>
             <div className={styles.chatUsername}>{matchedUser.username}</div>
             <div className={styles.chatLocation}>{matchedUser.email}</div>

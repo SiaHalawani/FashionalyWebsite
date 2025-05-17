@@ -157,6 +157,7 @@ import React, { useEffect, useState } from 'react';
 import { getAllUsers, getFollowingList } from '../../../../BackendIntegration/AxiosConnections/UserGetConnections/UserAxios';
 import { Link } from 'react-router-dom';
 import containers from '../../../CSS/containers.module.css';
+import fallbackPic from '../../../../../public/fallback.webp'; // adjust the path as needed
 
 export default function Headerbar({ currentUser, setChatWithId, userId }) {
   const [users, setUsers] = useState([]);
@@ -200,7 +201,7 @@ export default function Headerbar({ currentUser, setChatWithId, userId }) {
             >
               <Link to={`/Fashop/User/${user.userID}`} className={containers.userLink}>
                 <img
-                  src={user.profilePicture || '/default-avatar.png'}
+                  src={user.profilePicture || fallbackPic}
                   alt={user.username}
                   className={containers.userAvatar}
                 />
