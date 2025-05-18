@@ -2,8 +2,9 @@
 
 > Senior Project for CSIS290 – Spring Semester 2025  
 > **Sondos Halawani (A2112613)** & **David Kharrat (A2110272)**  
-> Instructor: **Dr. Charbel Fakhry**
-> GitHub Repository: https://github.com/SiaHalawani/FashionalyWebsite 
+> Instructor: **Dr. Charbel Fakhry**  
+
+> GitHub Repository: https://github.com/SiaHalawani/FashionalyWebsite
 
 ---
 
