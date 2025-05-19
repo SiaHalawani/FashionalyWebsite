@@ -37,16 +37,16 @@ export default function OnAiClick() {
   const [weights, setWeights] = useState({
     gender: 1,
     season: 1.5,
-    occasion: 4,
-    temperature_range: 3,
+    occasion: 10,
+    temperature_range: 2,
     price: 2,
-    brand: 3,
-    color: 6,
-    material: 4,
+    brand: 5,
+    color: 5,
+    material: 5,
     type: 4,
     metadataBonus: 0.8,
     harmonyBonus: 2.5,
-    vibeBonus: 4,
+    vibeBonus: 3,
   });
 
   const [filters, setFilters] = useState({
