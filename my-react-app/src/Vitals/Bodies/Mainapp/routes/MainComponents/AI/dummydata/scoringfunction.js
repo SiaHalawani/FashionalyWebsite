@@ -79,6 +79,13 @@ export function scoreItem(wardrobe, filters = {}, weights = {}) {
     const weightedScoreSum = dimensionScores.reduce((acc, d) => acc + d.score * d.weight, 0);
     const baseScore = totalWeight > 0 ? weightedScoreSum / totalWeight : 0;
 
+    let boostedScore = baseScore;
+
+// Boost score if occasion matches exactly
+if (item.occasion?.toLowerCase?.() === filters.occasion?.toLowerCase?.()) {
+  boostedScore += 2; // You can adjust this value if needed
+}
+
     const bonuses = {
       completeness: calculateCompleteness(item) * (activeWeights.metadataBonus || 0),
       harmony: activeWeights.color > 5 ? 0 : calculateHarmony(item) * (activeWeights.harmonyBonus || 0),
@@ -90,14 +97,28 @@ export function scoreItem(wardrobe, filters = {}, weights = {}) {
 
     return {
       ...item,
-      score: Math.min(Math.round((baseScore * 8 + bonusSum) * 100) / 100, 10),
+      score: Math.min(Math.round((boostedScore * 8 + bonusSum) * 100) / 100, 10),
+
       scoringDetails: process.env.NODE_ENV === "development"
         ? { dimensions: dimensionScores, bonuses }
         : undefined
     };
   });
 
-  return scoredItems.sort((a, b) => b.score - a.score);
+  return scoredItems.sort((a, b) => {
+  const occasionFilter = filters.occasion?.toLowerCase?.();
+
+  const aOccasionMatch = a.occasion?.toLowerCase?.() === occasionFilter ? 1 : 0;
+  const bOccasionMatch = b.occasion?.toLowerCase?.() === occasionFilter ? 1 : 0;
+
+  // Prioritize occasion match first, then score
+  if (aOccasionMatch !== bOccasionMatch) {
+    return bOccasionMatch - aOccasionMatch;
+  }
+
+  return b.score - a.score;
+});
+
 
   function exactMatch(a, b) {
     if (a === undefined || b === undefined) return false;

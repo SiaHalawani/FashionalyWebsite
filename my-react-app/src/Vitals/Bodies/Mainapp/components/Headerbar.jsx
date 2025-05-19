@@ -26,6 +26,7 @@ export default function Headerbar() {
       </div>
 
       <nav>
+         <div className={containers.responsiveNav}>
         <Link to="/Home/home" className={linkClass("home")}>
           <Home size={20} /><span className="collapsing">Home</span>
         </Link>
@@ -41,7 +42,8 @@ export default function Headerbar() {
         <Link to="/Home/EditItem" className={linkClass("EditItem")}>
           <Layers size={20} /><span className="collapsing">Items</span>
         </Link>
-      </nav>
+         </div>
+     
 
       <div className={containers.responsiveNav}>
         <Link to="/Home/Seller" className={linkClass("Seller")}>
@@ -76,6 +78,7 @@ export default function Headerbar() {
           <MessagesSquare size={20} /><span className="collapsing">Chat</span>
         </Link>
       </div>
+      </nav>
     </header>
   );
 }
