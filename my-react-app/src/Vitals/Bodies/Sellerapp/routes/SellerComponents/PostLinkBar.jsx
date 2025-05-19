@@ -75,8 +75,8 @@ const LinkBar = ({
         >
           <span onClick={() => setActiveLinkIndex(i)}>{link.title}</span>
 
-          <button onClick={() => handleEditGroup(link)} className={SellerStyle.editButton}>✏️</button>
-          <button onClick={() => handleDeleteGroup(link)} className={SellerStyle.deleteButton}>🗑️</button>
+          <button onClick={() => handleEditGroup(link)} className={SellerStyle.editBtn}>✏️</button>
+          <button onClick={() => handleDeleteGroup(link)} className={SellerStyle.deleteBtn}>🗑️</button>
         </div>
       ))}
 

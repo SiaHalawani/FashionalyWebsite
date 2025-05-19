@@ -51,8 +51,9 @@ export default function GlobalSearchSection({ searchQuery }) {
   };
 
   const handleUserClick = (user) => {
-    if (user.userID) {
-      navigate(`/Fashop/User/${user.userID}`, { state: { background: location } });
+  
+    if (user.id) {
+      navigate(`/Fashop/User/${user.id}`);
     }
   };
 
@@ -96,7 +97,7 @@ export default function GlobalSearchSection({ searchQuery }) {
                   item.previewImage ||
                   '/fallback.jpg'
                 }
-                alt="item"
+               
               />
               <p>
                 {item.itemName ||

@@ -13,90 +13,40 @@ export default function BodyLanding() {
     const handleChange = () => {
         navigate("/Signup");
     }
+     const handleChangetw = () => {
+        navigate("/Login");
+    }
 
     return (
-        <div className={landing.landing}>
-            <div className={landing.pos_mid1}>
-                <div className={showcase.topmid}>
-                    <img src={logo} alt="logo" />
-                    <h1>Your imagination, your wardrobe</h1>
-                </div>
-            </div>
+<div className={landing.landing}>
+  <div className={landing.leftSection}>
+    
+  </div>
 
-            <div className={landing.pos_bottom} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <button 
-                    onClick={handleChange} 
-                    style={{
-                        padding: '10px 20px',
-                        marginBottom: '10px',
-                        borderRadius: '8px',
-                        border: 'none',
-                        backgroundColor: '#222',
-                        color: 'white',
-                        fontSize: '15px',
-                        cursor: 'pointer',
-                        width: '250px',  // FIXED WIDTH
-                        maxWidth: '90%'
-                    }}
-                >
-                    Sign up for free
-                </button>
+  <div className={landing.rightSection}>
+    <div className={landing.containerBox}>
+     
+      <div className={landing.pos_mid1}>
+        <img src={logo} alt="logo" />
+        <h1>
+          <span className={landing.gradientTitle}>Unleash Style.</span><br />
+          <span className={landing.gradientSubtitle}>Your Imagination. Your Wardrobe.</span>
+        </h1>
+     
+    </div>
+      <div className={landing.pos_bottom}>
+        <button onClick={handleChange} className={landing.authButton}>
+          Sign up for free
+        </button>
+        <span className={landing.loginText}>
+          Already have an account? <Link to='/Login'>Log In</Link>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
 
-                <button 
-                    style={{
-                        padding: '10px 20px',
-                        marginBottom: '10px',
-                        borderRadius: '8px',
-                        border: '1px solid #ccc',
-                        backgroundColor: 'white',
-                        color: '#333',
-                        fontSize: '15px',
-                        cursor: 'pointer',
-                        width: '250px',
-                        maxWidth: '90%'
-                    }}
-                >
-                    Continue with Google
-                </button>
 
-                <button 
-                    style={{
-                        padding: '10px 20px',
-                        marginBottom: '10px',
-                        borderRadius: '8px',
-                        border: '1px solid #ccc',
-                        backgroundColor: 'white',
-                        color: '#333',
-                        fontSize: '15px',
-                        cursor: 'pointer',
-                        width: '250px',
-                        maxWidth: '90%'
-                    }}
-                >
-                    Continue with Facebook
-                </button>
 
-                <button 
-                    style={{
-                        padding: '10px 20px',
-                        marginBottom: '10px',
-                        borderRadius: '8px',
-                        border: '1px solid #ccc',
-                        backgroundColor: 'white',
-                        color: '#333',
-                        fontSize: '15px',
-                        cursor: 'pointer',
-                        width: '250px',
-                        maxWidth: '90%'
-                    }}
-                >
-                    Continue with Apple
-                </button>
-
-                <span style={{ marginTop: '12px', display: 'block', textAlign: 'center', fontSize: '14px' }}>
-                    Already have an account? <Link to='/Login'>Log In</Link>
-                </span>
-            </div>
-        </div>
     )
 }

@@ -11,7 +11,8 @@ const TabNavigation = ({ activeTab, setActiveTab, getTotalCount }) => (
         }}
         className={activeTab === section ? SellerStyle.activeTab : SellerStyle.tabItem}
       >
-        {getTotalCount(section)} {section.charAt(0).toUpperCase() + section.slice(1)}
+        {/* {getTotalCount(section)}  */}
+        {section.charAt(0).toUpperCase() + section.slice(1)}
       </div>
     ))}
   </div>

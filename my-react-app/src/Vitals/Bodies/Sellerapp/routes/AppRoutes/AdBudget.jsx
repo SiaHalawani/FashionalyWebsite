@@ -1,132 +1,76 @@
-// import React, { useState } from 'react';
-// import { useGlobalState } from '../../../../../BackendIntegration/UserData/GeneralDataManagement';
-// import Userstyle from '../../../../CSS/User.module.css';
-// import AddWardrobe from '../MainComponents/User/AddWardrobe';
-// import ViewWardrobeItem from '../MainComponents/User/ViewWardrobeItem';
+import { useSellerState } from "../../../../../BackendIntegration/SellerData/SellerDataManagement";
+import { useState } from "react";
+import styles from "./AdBudget.module.css";
+import { updateAdBudget } from "../../../../../BackendIntegration/AxiosConnections/SellerAxios";
 
-// const deepClone = (obj) => JSON.parse(JSON.stringify(obj));
-
-// export default function Wardrobe() {
-//   const { data, setData, profileData } = useGlobalState();
-//   const [activeLinkIndex, setActiveLinkIndex] = useState(0);
-//   const [currentAddPage, setCurrentAddPage] = useState(false);
-//   const [selectedItem, setSelectedItem] = useState(null);
-
-//   const wardrobe = data?.wardrobe || [];
-//   const activeLink = wardrobe?.[activeLinkIndex] || { items: [] };
-
-//   const goBack = () => setCurrentAddPage(false);
-
-//   const handleAddItem = (item) => {
-//     const newData = deepClone(data);
-//     newData.wardrobe[activeLinkIndex].items.push(item);
-//     setData(newData);
-//     setCurrentAddPage(false);
-//   };
-
-//   const handleDelete = (index) => {
-//     if (wardrobe.length <= 1) return;
-//     const newData = deepClone(data);
-//     newData.wardrobe = newData.wardrobe.filter((_, i) => i !== index);
-//     setData(newData);
-//     setActiveLinkIndex(0);
-//   };
-
-//   if (currentAddPage) {
-//     return (
-//       <AddWardrobe
-//         goBack={goBack}
-//         onAddItem={handleAddItem}
-//         category={activeLink.title?.toLowerCase() || 'misc'}
-//         userData={{ ...profileData, components: data }}
-//       />
-//     );
-//   }
-
-//   if (selectedItem) {
-//     return (
-//       <ViewWardrobeItem
-//         item={selectedItem}
-//         goBack={() => setSelectedItem(null)}
-//         onDelete={() => {
-//           const newData = deepClone(data);
-//           newData.wardrobe[activeLinkIndex].items = newData.wardrobe[activeLinkIndex].items.filter(
-//             (item) => item.id !== selectedItem.id
-//           );
-//           setData(newData);
-//           setSelectedItem(null);
-//         }}
-//         onUpdate={(updatedItem) => {
-//           const newData = deepClone(data);
-//           newData.wardrobe[activeLinkIndex].items = newData.wardrobe[activeLinkIndex].items.map((item) =>
-//             item.id === selectedItem.id ? updatedItem : item
-//           );
-//           setData(newData);
-//           setSelectedItem(updatedItem);
-//         }}
-//       />
-//     );
-//   }
-
-//   return (
-//     <div className={Userstyle.userContainer}>
-//       <div className={Userstyle.userbodypage}>
-//         <div className={Userstyle.navTabs}>
-//           <div className={Userstyle.activeTab}>Wardrobe</div>
-//         </div>
-
-//         <div className={Userstyle.linksBar}>
-//           {wardrobe.map((link, i) => (
-//             <div
-//               key={i}
-//               onClick={() => setActiveLinkIndex(i)}
-//               className={Userstyle.linkItem}
-//               style={{ borderBottom: activeLinkIndex === i ? '2px solid #8b5cf6' : 'none' }}
-//             >
-//               <span>{link.title}</span>
-//               {wardrobe.length > 1 && (
-//                 <button
-//                   onClick={(e) => {
-//                     e.stopPropagation();
-//                     handleDelete(i);
-//                   }}
-//                   className={Userstyle.deleteBtn}
-//                 >
-//                   ×
-//                 </button>
-//               )}
-//             </div>
-//           ))}
-//         </div>
-
-//         <div className={Userstyle.tabContent}>
-//           <div className={Userstyle.gridItems}>
-//             {activeLink.items.map((item, index) => {
-//               const image = item.image || item.preview || '/src/assets/fallback.png';
-//               return (
-//                 <div key={index} className={Userstyle.itemBox} onClick={() => setSelectedItem(item)}>
-//                   <img src={image} alt={item.itemName} />
-//                   <p className={Userstyle.itemLabel}><b>{item.itemName}</b></p>
-//                   <p className={Userstyle.itemSub}>{item.category || item.brand || ''}</p>
-//                 </div>
-//               );
-//             })}
-
-//             <div className={Userstyle.itemBox} onClick={() => setCurrentAddPage(true)}>
-//               <div className={Userstyle.addBtn}>+</div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
 export default function AdBudget() {
+  const { sellerProfile, setSellerProfile } = useSellerState();
+  const [paymentStatus, setPaymentStatus] = useState(null);
+  const [paymentAmount, setPaymentAmount] = useState(""); // New: store input
+
+  const handleDummyPayment = async () => {
+    const amount = parseFloat(paymentAmount);
+    if (isNaN(amount) || amount <= 0) {
+      setPaymentStatus("Please enter a valid amount.");
+      return;
+    }
+
+    try {
+      const result = await updateAdBudget(sellerProfile.sellerId, amount);
+
+      // Update locally
+      setSellerProfile(prev => ({
+        ...prev,
+        adBudget: {
+          ...prev.adBudget,
+          currentBudget: (prev.adBudget?.currentBudget || 0) + amount
+        }
+      }));
+
+      setPaymentStatus(result.message);
+      setPaymentAmount(""); // Clear input after success
+    } catch (err) {
+      console.error(err);
+      setPaymentStatus("Payment failed.");
+    }
+  };
+
+  const adBudget = sellerProfile?.adBudget || null;
+
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Ad Budget</h1>
-      <p>This is the Ad Budget page.</p>
-      <p>Here you can manage your advertising budget.</p>
+    <div className={styles.container}>
+      <h1 className={styles.header}>Ad Budget Management</h1>
+
+      <div className={styles.card}>
+        <h2 className={styles.subheader}>Current Ad Budget Info</h2>
+        {adBudget ? (
+          <ul className={styles.budgetList}>
+            <li><strong>Current Budget:</strong> ${adBudget.currentBudget}</li>
+            <li><strong>Spent:</strong> ${adBudget.spent}</li>
+          </ul>
+        ) : (
+          <p className={styles.notSet}>Ad budget info not set yet.</p>
+        )}
+      </div>
+
+      <div className={styles.card}>
+        <h2 className={styles.subheader}>Add Funds to Ad Budget</h2>
+        <p> 💳 Enter the amount you want to add </p>
+
+        <input
+          type="number"
+          placeholder="Enter amount ($)"
+          className={styles.inputField}
+          value={paymentAmount}
+          onChange={(e) => setPaymentAmount(e.target.value)}
+        />
+
+        <button className={styles.paypalButton} onClick={handleDummyPayment}>
+         Pay
+        </button>
+
+        {paymentStatus && <p className={styles.successMsg}>{paymentStatus}</p>}
+      </div>
     </div>
   );
 }

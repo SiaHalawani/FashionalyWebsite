@@ -1,47 +1,59 @@
-
 .background {
-    background-image: url(../../assets/patternd.png);
-    background-size: 150vh;
-    background-repeat: repeat;
-    animation: pan 70s infinite linear;
-    width: 100vw;
-    height: 100vh;
-
-    /* ✅ Apply fade effect on all edges (Left, Right, Top, Bottom) */
-  /* Softer radial fade effect */
-mask-image: 
-  linear-gradient(to top,    rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0.5)),
-  linear-gradient(to right,  rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0.5));
--webkit-mask-image: 
-  linear-gradient(to top,    rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0.5)),
-  linear-gradient(to right,  rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0.5));
-mask-composite: intersect;
--webkit-mask-composite: destination-in;
-
-    
+  background-image: url(../../assets/patternd.png);
+  background-size: 150vh;
+  background-repeat: repeat;
+  animation: pan 70s infinite linear;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
 @keyframes pan {
-    0% {
-        background-position: 0% 0%;
-    }
-    100% {
-        background-position: 100% 100%; /* ✅ Moves pattern continuously */
-    }
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
 }
 
-.center{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
 }
-.center img{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-top: 20px;
+
+.overlayBox {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: #fff;
+  max-width: 600px;
+  width: 90%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlayBox h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.overlayBox img {
+  width: 100px;
+  height: 100px;
+  margin-top: 20px;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
 }

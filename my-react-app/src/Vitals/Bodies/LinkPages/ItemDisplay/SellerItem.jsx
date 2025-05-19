@@ -9,6 +9,7 @@ import {
 } from '../../../../BackendIntegration/UserData/Editors/Edititem';
 import { useGlobalState } from '../../../../BackendIntegration/UserData/GeneralDataManagement';
 import styles from './AdLinkPage.module.css';
+import fallbackPic from '../../../../../public/fallback.webp'; // adjust the path as needed
 
 export default function ItemLinkPage() {
   const { profileData } = useGlobalState();
@@ -55,7 +56,7 @@ export default function ItemLinkPage() {
 
     const presetData = {
       itemName: item.itemname,
-      imageURL: 'http://test.png', // TODO: Replace with real upload
+      imageURL: fallbackPic, 
       categoryID,
       wardrobeID,
       color: item.color || 'Beige',

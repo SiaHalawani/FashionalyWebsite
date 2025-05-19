@@ -283,3 +283,11 @@ export const deleteSellerPostGroup = async (sellerId, postGroupId) => {
     throw error;
   }
 };
+
+export const updateAdBudget = async (sellerId, amount) => {
+  const response = await axios.put('http://localhost:5001/updateAdBudget', {
+    sellerId,
+    amount
+  });
+  return response.data;
+};

@@ -165,6 +165,16 @@ const [colorOptions, setColorOptions] = useState(['Red', 'Blue', 'Green', 'Black
 const [materialOptions, setMaterialOptions] = useState(['Cotton', 'Wool', 'Polyester', 'Silk']);
 const [seasonOptions, setSeasonOptions] = useState(['Spring', 'Summer', 'Autumn', 'Winter', 'All']);
 const [occasionOptions, setOccasionOptions] = useState(['Casual', 'Formal', 'Party', 'Business']);
+const [brandOptions, setBrandOptions] = useState(['Nike', 'Adidas', 'Puma', 'Reebok']);
+const [newBrand, setNewBrand] = useState('');
+
+const addBrand = () => {
+  if (newBrand && !brandOptions.includes(newBrand)) {
+    setBrandOptions([...brandOptions, newBrand]);
+    setBrand(newBrand);
+    setNewBrand('');
+  }
+};
 
 const [newColor, setNewColor] = useState('');
 const [newMaterial, setNewMaterial] = useState('');
@@ -285,9 +295,14 @@ return (
       {validationErrors.temperatureRange && <div className={styles.errorText}>Invalid temperature range</div>}
 
       <label>Brand</label>
-      <select className={styles.input} value={brand} onChange={(e) => setBrand(e.target.value)}>
-        <option>Nike</option><option>Adidas</option><option>Puma</option><option>Reebok</option>
-      </select>
+<select className={styles.input} value={brand} onChange={(e) => setBrand(e.target.value)}>
+  {brandOptions.map((opt, idx) => <option key={idx}>{opt}</option>)}
+</select>
+<div className={styles.inlineRow}>
+  <input className={styles.smallInput} placeholder="Add brand" value={newBrand} onChange={(e) => setNewBrand(e.target.value)} />
+  <button className={styles.smallButton} onClick={addBrand}>+</button>
+</div>
+
 
       <label>Gender</label>
       <select className={`${styles.input} ${validationErrors.gender ? styles.errorInput : ''}`} value={gender} onChange={(e) => setGender(e.target.value)}>

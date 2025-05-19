@@ -81,6 +81,8 @@ const activeGroupId = activeLink?.id || 'default-post-group';
 
   return (
     <div className={SellerStyle.dashboardBody}>
+       <h1 className="addItemsHeader">Add Posts</h1>
+
       <div className={SellerStyle.userContainer}>
       <LinkBar
   currentCategory={currentCategory}

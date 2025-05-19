@@ -23,10 +23,14 @@ export default function BodyOpening() {
    
         <div className= {styles.background}>
            
-           <div className= {styles.center}>
-            <h1 className={components.title}>Fashionly</h1>
-            <img src={logo}  alt="logo" />
-           </div>  
+          <div className={styles.wrapper}>
+  <div className={styles.center}>
+    <div className={styles.overlayBox}>
+    <h1 className={components.title}>Fashionly</h1>
+    <img src={logo} alt="logo" />
+    </div>
+  </div>
+</div>
 
         </div>
     

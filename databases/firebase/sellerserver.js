@@ -594,6 +594,37 @@ app.delete('/deleteSellerPostGroup/:sellerId/:postGroupId', async (req, res) => 
   }
 });
 
+
+// ADD to seller's AdBudget (e.g., after dummy PayPal)
+app.put('/updateAdBudget', async (req, res) => {
+  try {
+    const { sellerId, amount } = req.body;
+
+    if (!sellerId || typeof amount !== 'number') {
+      return res.status(400).json({ error: 'sellerId and numeric amount are required' });
+    }
+
+    const sellerRef = db.collection('Sellers').doc(sellerId);
+    const sellerSnap = await sellerRef.get();
+
+    if (!sellerSnap.exists) {
+      return res.status(404).json({ error: 'Seller not found' });
+    }
+
+    const sellerData = sellerSnap.data();
+    const currentFunds = sellerData.AdBudget?.currentFunds || 0;
+
+    await sellerRef.update({
+      'AdBudget.currentFunds': currentFunds + amount
+    });
+
+    res.status(200).json({ message: `Ad budget updated by $${amount}.`, newFunds: currentFunds + amount });
+  } catch (error) {
+    console.error('Error updating ad budget:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
   
   
   

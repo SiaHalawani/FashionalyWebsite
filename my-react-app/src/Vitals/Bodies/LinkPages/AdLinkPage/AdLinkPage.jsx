@@ -169,7 +169,9 @@ export default function AdLinkPage() {
     </div>
     <div className={styles.sellerField}>
       <label>Rating</label>
-      <p>{seller.stats?.rating}</p>
+      {/* <p>{seller.stats?.rating}</p> */}
+      <p>⭐⭐⭐⭐</p>
+      
     </div>
   </div>
 

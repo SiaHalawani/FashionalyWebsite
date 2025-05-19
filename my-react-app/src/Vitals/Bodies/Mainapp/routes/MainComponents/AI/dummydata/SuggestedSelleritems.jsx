@@ -52,22 +52,22 @@ export default function SuggestedSellerItems({ filters, weights }) {
     }
   };
 
-  return (
-    <div className={styles.exploreWrapper}>
-      
-      <div className={styles.exploreContainer}>
-        <ExploreSection
-          title="Suggested Items"
-          data={topItems.map(item => ({
-            id: item.id,
-            title: item.itemname || item.itemName,
-            img: item.image || item.imageURL,
-            fullItem: item
-          }))}
-          brandLogo={null}
-          onItemClick={handleClick}
-        />
+ return (
+  <div>
+       <h1 className="addItemsHeader">Seller Suggestions</h1>
+  <div className={styles.suggestedScrollWrapper}>
+ 
+    {topItems.map(item => (
+      <div
+        key={item.id}
+        className={styles.suggestedItemCard}
+        onClick={() => handleClick(item)}
+      >
+        <img src={item.image || item.imageURL} alt={item.itemname || 'Item'} />
+        <p>{item.itemname || item.itemName}</p>
       </div>
-    </div>
-  );
+    ))}
+  </div>
+  </div>
+);
 }

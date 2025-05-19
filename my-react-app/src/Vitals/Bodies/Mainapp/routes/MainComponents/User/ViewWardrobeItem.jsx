@@ -165,6 +165,24 @@ export default function ViewWardrobeItem({ item, goBack, onDelete, onUpdate }) {
   const [wardrobe, setWardrobe] = useState(null);
   const [error, setError] = useState('');
 
+  const [colorOptions, setColorOptions] = useState(['Red', 'Blue', 'Green', 'Black', 'White']);
+const [materialOptions, setMaterialOptions] = useState(['Cotton', 'Wool', 'Polyester', 'Silk']);
+const [seasonOptions, setSeasonOptions] = useState(['Spring', 'Summer', 'Autumn', 'Winter']);
+const [occasionOptions, setOccasionOptions] = useState(['Casual', 'Formal', 'Party', 'Business']);
+const [brandOptions, setBrandOptions] = useState(['Nike', 'Adidas', 'Puma', 'Reebok']);
+
+const [newColor, setNewColor] = useState('');
+const [newMaterial, setNewMaterial] = useState('');
+const [newSeason, setNewSeason] = useState('');
+const [newOccasion, setNewOccasion] = useState('');
+const [newBrand, setNewBrand] = useState('');
+
+const addColor = () => { if (newColor && !colorOptions.includes(newColor)) { setColorOptions([...colorOptions, newColor]); setWardrobe({ ...wardrobe, color: newColor }); setNewColor(''); } };
+const addMaterial = () => { if (newMaterial && !materialOptions.includes(newMaterial)) { setMaterialOptions([...materialOptions, newMaterial]); setWardrobe({ ...wardrobe, material: newMaterial }); setNewMaterial(''); } };
+const addSeason = () => { if (newSeason && !seasonOptions.includes(newSeason)) { setSeasonOptions([...seasonOptions, newSeason]); setWardrobe({ ...wardrobe, season: newSeason }); setNewSeason(''); } };
+const addOccasion = () => { if (newOccasion && !occasionOptions.includes(newOccasion)) { setOccasionOptions([...occasionOptions, newOccasion]); setWardrobe({ ...wardrobe, occasion: newOccasion }); setNewOccasion(''); } };
+const addBrand = () => { if (newBrand && !brandOptions.includes(newBrand)) { setBrandOptions([...brandOptions, newBrand]); setWardrobe({ ...wardrobe, brand: newBrand }); setNewBrand(''); } };
+
   useEffect(() => {
     if (item?.id) {
       getItemById(item.id)
@@ -240,50 +258,85 @@ export default function ViewWardrobeItem({ item, goBack, onDelete, onUpdate }) {
       />
 
       {editMode ? (
-        <div className={styles.filterGroup}>
-          <input className={styles.input} name="itemName" value={wardrobe.itemName} onChange={handleChange} placeholder="Item Name" />
-          <input className={styles.input} type="file" accept="image/*" onChange={handleImageChange} />
-          <select className={styles.input} name="color" value={wardrobe.color} onChange={handleChange}>
-            <option>Red</option><option>Blue</option><option>Green</option><option>Black</option><option>White</option>
-          </select>
-          <select className={styles.input} name="material" value={wardrobe.material} onChange={handleChange}>
-            <option>Cotton</option><option>Wool</option><option>Polyester</option><option>Silk</option>
-          </select>
-          <select className={styles.input} name="season" value={wardrobe.season} onChange={handleChange}>
-            <option>Spring</option><option>Summer</option><option>Autumn</option><option>Winter</option>
-          </select>
-          <select className={styles.input} name="occasion" value={wardrobe.occasion} onChange={handleChange}>
-            <option>Casual</option><option>Formal</option><option>Party</option><option>Business</option>
-          </select>
+       <div className={styles.filterGroup}>
+  <input className={styles.input} name="itemName" value={wardrobe.itemName} onChange={handleChange} placeholder="Item Name" />
+  <input className={styles.input} type="file" accept="image/*" onChange={handleImageChange} />
 
-          <label>Temperature Range: {wardrobe.temperatureMin || 0}°C - {wardrobe.temperatureMax || 0}°C</label>
-          <input type="range" min="0" max="50" value={wardrobe.temperatureMin || 0} onChange={(e) => setWardrobe({ ...wardrobe, temperatureMin: e.target.value })} />
-          <input type="range" min="0" max="50" value={wardrobe.temperatureMax || 0} onChange={(e) => setWardrobe({ ...wardrobe, temperatureMax: e.target.value })} />
+  <label>Color</label>
+  <select className={styles.input} name="color" value={wardrobe.color} onChange={handleChange}>
+    {colorOptions.map((opt, idx) => <option key={idx}>{opt}</option>)}
+  </select>
+  <div className={styles.inlineRow}>
+    <input className={styles.smallInput} placeholder="Add color" value={newColor} onChange={(e) => setNewColor(e.target.value)} />
+    <button className={styles.smallButton} onClick={addColor}>+</button>
+  </div>
 
-          <select className={styles.input} name="brand" value={wardrobe.brand} onChange={handleChange}>
-            <option>Nike</option><option>Adidas</option><option>Puma</option><option>Reebok</option>
-          </select>
-          <select className={styles.input} name="gender" value={wardrobe.gender} onChange={handleChange}>
-            <option value="male">Male</option><option value="female">Female</option>
-          </select>
-          <input className={styles.input} name="price" value={wardrobe.price} onChange={handleChange} placeholder="Price" />
-          <label>
-            <input type="checkbox" checked={wardrobe.favorite} onChange={(e) => setWardrobe({ ...wardrobe, favorite: e.target.checked })} />
-            Favorite
-          </label>
-          <select className={styles.input} name="visibility" value={wardrobe.visibility} onChange={handleChange}>
-            <option value="public">Public</option><option value="private">Private</option>
-          </select>
+  <label>Material</label>
+  <select className={styles.input} name="material" value={wardrobe.material} onChange={handleChange}>
+    {materialOptions.map((opt, idx) => <option key={idx}>{opt}</option>)}
+  </select>
+  <div className={styles.inlineRow}>
+    <input className={styles.smallInput} placeholder="Add material" value={newMaterial} onChange={(e) => setNewMaterial(e.target.value)} />
+    <button className={styles.smallButton} onClick={addMaterial}>+</button>
+  </div>
 
-          {error && <div className={styles.errorMessage}>{error}</div>}
+  <label>Season</label>
+  <select className={styles.input} name="season" value={wardrobe.season} onChange={handleChange}>
+    {seasonOptions.map((opt, idx) => <option key={idx}>{opt}</option>)}
+  </select>
+  <div className={styles.inlineRow}>
+    <input className={styles.smallInput} placeholder="Add season" value={newSeason} onChange={(e) => setNewSeason(e.target.value)} />
+    <button className={styles.smallButton} onClick={addSeason}>+</button>
+  </div>
 
-          <div className={styles.buttonGroup}>
+  <label>Occasion</label>
+  <select className={styles.input} name="occasion" value={wardrobe.occasion} onChange={handleChange}>
+    {occasionOptions.map((opt, idx) => <option key={idx}>{opt}</option>)}
+  </select>
+  <div className={styles.inlineRow}>
+    <input className={styles.smallInput} placeholder="Add occasion" value={newOccasion} onChange={(e) => setNewOccasion(e.target.value)} />
+    <button className={styles.smallButton} onClick={addOccasion}>+</button>
+  </div>
 
-            <button className={styles.button} onClick={() => setEditMode(false)}>Cancel</button>
-            <button className={styles.button} onClick={handleSave}>Save</button>
-            
-          </div>
-        </div>
+  <label>Temperature Range: {wardrobe.temperatureMin || 0}°C - {wardrobe.temperatureMax || 0}°C</label>
+  <input type="range" min="0" max="50" value={wardrobe.temperatureMin || 0} onChange={(e) => setWardrobe({ ...wardrobe, temperatureMin: e.target.value })} />
+  <input type="range" min="0" max="50" value={wardrobe.temperatureMax || 0} onChange={(e) => setWardrobe({ ...wardrobe, temperatureMax: e.target.value })} />
+
+  <label>Brand</label>
+  <select className={styles.input} name="brand" value={wardrobe.brand} onChange={handleChange}>
+    {brandOptions.map((opt, idx) => <option key={idx}>{opt}</option>)}
+  </select>
+  <div className={styles.inlineRow}>
+    <input className={styles.smallInput} placeholder="Add brand" value={newBrand} onChange={(e) => setNewBrand(e.target.value)} />
+    <button className={styles.smallButton} onClick={addBrand}>+</button>
+  </div>
+
+  <label>Gender</label>
+  <select className={styles.input} name="gender" value={wardrobe.gender} onChange={handleChange}>
+    <option value="male">Male</option><option value="female">Female</option>
+  </select>
+
+  <label>Price</label>
+  <input className={styles.input} name="price" value={wardrobe.price} onChange={handleChange} placeholder="Price" />
+
+  <label>
+    <input type="checkbox" checked={wardrobe.favorite} onChange={(e) => setWardrobe({ ...wardrobe, favorite: e.target.checked })} />
+    Favorite
+  </label>
+
+  <label>Visibility</label>
+  <select className={styles.input} name="visibility" value={wardrobe.visibility} onChange={handleChange}>
+    <option value="public">Public</option><option value="private">Private</option>
+  </select>
+
+  {error && <div className={styles.errorMessage}>{error}</div>}
+
+  <div className={styles.buttonGroup}>
+    <button className={styles.button} onClick={() => setEditMode(false)}>Cancel</button>
+    <button className={styles.button} onClick={handleSave}>Save</button>
+  </div>
+</div>
+
       ) : (
         <div className={styles.filterGroup}>
           <p><b>Category ID:</b> {wardrobe.categoryID}</p>

@@ -17,7 +17,24 @@
     padding: 0 20px;
   }
   
-  
+  .addBtnCompact {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  font-size: 18px;
+  background-color: var(--background-color-box);
+  color: var(--text-titles);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.addBtnCompact:hover {
+  background-color: var(--background-color-secondary);
+}
+
   /* ========== HEADER STYLE LIKE USER ========== */
   .sellerheadpage {
     background-color: var(--background-color);
@@ -54,8 +71,8 @@
     font-size: 12px;
     border: none;
     border-radius: 6px;
-    background-color: var(--background-color-btn);
-    color: var(--text-btn);
+     background: none;
+    border: none;
     cursor: pointer;
   }
   

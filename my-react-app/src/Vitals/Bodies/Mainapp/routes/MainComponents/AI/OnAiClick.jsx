@@ -347,6 +347,7 @@ console.log("Scored items:", scored);
       </div>
       
     </div>
+    
      <SuggestedSellerItems filters={filters} weights={weights} />
 
        {showNamePrompt && (

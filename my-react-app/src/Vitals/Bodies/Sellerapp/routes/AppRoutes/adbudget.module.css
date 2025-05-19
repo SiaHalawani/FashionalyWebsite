@@ -1,0 +1,72 @@
+/* AdBudget.module.css */
+
+.container {
+  padding: 30px;
+  max-width: 600px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+  color: var(--text-body);
+}
+
+.header {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: var(--text-titles);
+}
+
+.card {
+  background-color: var(--background-color-box);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.1);
+}
+
+.subheader {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--text-subtitles);
+}
+
+.budgetList {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.notSet {
+  color: #888;
+}
+
+.paypalButton {
+  background-color: var(--background-color-btn);
+  color: var(--text-btn);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.2s ease-in-out;
+}
+
+.paypalButton:hover {
+  background-color: var(--background-toggle-color-btn);
+}
+
+.successMsg {
+  margin-top: 15px;
+  color: limegreen;
+  font-weight: bold;
+}
+.inputField {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: var(--background-color-box);
+  color: var(--text-body);
+}

@@ -1,36 +1,173 @@
 .landing {
-    display: grid;
-    grid-template-areas: 
-        "middle "
-        "bottom ";
-   
-    grid-template-rows:  7fr 3fr;
-    max-width: 100wh;
-    max-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  padding: 60px 20px;
+  background-color: var(--background-color);
+  text-align: center;
 }
 
+.containerBox {
+  max-width: 600px;
+  padding: 2.5rem;
+  border-radius: 14px;
+  background-color: var(--background-color-box);
 
+  border: 2px solid var(--box-border);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
 
+.containerBox:hover {
+  transform: translateY(-6px);
+ 
+  box-shadow: 0 0 18px var(--background-toggle-color-btn);
+  border-color: var(--background-toggle-color-btn);
+}
 
 .pos_mid1 {
-    grid-area: middle;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.pos_mid1 img {
+  width: 120px;
+}
+
+.pos_mid1 h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-titles);
+  max-width: 90%;
+}
+
+.gradientTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #ff6ec4, #7873f5, #4ade80);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 5s linear infinite;
+  background-size: 200% auto;
+  letter-spacing: 1px;
+}
+
+.gradientSubtitle {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text-subtitles);
+  margin-top: 0.5rem;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 .pos_bottom {
-    grid-area: bottom;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
 }
- .pos_bottom {
-    display: flex;
-    justify-content: bottom;
-    flex-direction: column;
-    align-items: center;
-    height: 30vh;
-    text-align: center;
-} 
 
+.authButton {
+  padding: 12px 24px;
+  background-color: var(--background-toggle-color-btn);
+  color: var(--text-btn);
+  border: 2px solid var(--text-titles);
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 0 12px var(--background-toggle-color-btn);
+  transition: all 0.25s ease;
+}
 
+.authButton:hover {
+  transform: scale(1.06);
  
+}
+
+.loginText {
+  font-size: 14px;
+  color: var(--text-subtitles);
+}
+
+.loginText a {
+  color: var(--background-toggle-color-btn);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.loginText a:hover {
+  text-decoration: underline;
+}
+.landing {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.leftSection,
+.rightSection {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.leftSection {
+  background-image: url('/3.png'); /* replace with actual path */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rightSection {
+  background-image: url('/4.png'); /* replace with actual path */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerBox {
+  background: var(--background-color-box);
+  padding: 2.5rem;
+  border-radius: 14px;
+  border: 2px solid var(--box-border);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.containerBox:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 0 18px var(--background-toggle-color-btn);
+  border-color: var(--background-toggle-color-btn);
+}

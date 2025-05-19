@@ -17,14 +17,15 @@ const ProfileHeader = ({ sellerProfile, computedStats, getTotalCount }) => (
       </p>
       <p className={SellerStyle.userbio}>{sellerProfile.website}</p>
       <p className={SellerStyle.userbio}><i>{sellerProfile.email}</i></p>
-      <p className={SellerStyle.userinfo}>
-        Items: {getTotalCount('items')} | Posts: {getTotalCount('posts')}
-      </p>
+      
       <p className={SellerStyle.userlocation}>{sellerProfile.phone}</p>
     </div>
     <div className={SellerStyle.followStats}>
-      <div><p><b>{(computedStats?.followers || 0).toLocaleString()}</b></p><p>Followers</p></div>
-      <div><p><b>{(computedStats?.sales || 0).toLocaleString()}</b></p><p>Sales</p></div>
+      <p className={SellerStyle.userinfo}>
+      
+      </p>
+       <div><p><b> Items: </b></p><p>{getTotalCount('items')}</p></div>
+      <div><p><b> Posts: </b></p><p>{getTotalCount('posts')}</p></div>
     </div>
   </div>
 );

@@ -106,7 +106,8 @@ export default function SellerDashboard() {
 
   return (
     <div className={SellerStyle.dashboardBody}>
-      <h1>Add Items</h1>
+     <h1 className="addItemsHeader">Add Items</h1>
+
       <div className={SellerStyle.userContainer}>
       <LinkBar
   currentCategory={currentCategory}
